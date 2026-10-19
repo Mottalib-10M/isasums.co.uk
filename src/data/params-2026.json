@@ -1,0 +1,532 @@
+{
+ "_about": "Every statutory figure of the site lives here (RECETTE §4). Each one was read on the official page of `sources` on the date of `retrieved_at`. Figures for 2027/28 are only those already set by law (Finance Act 2026, SI 2026/1018); anything not yet set is null and labelled as such on the pages.",
+ "year": 2026,
+ "taxYear": "2026/27",
+ "nextTaxYear": "2027/28",
+ "taxYearLong": "6 April 2026 to 5 April 2027",
+ "retrieved_at": "2026-10-19",
+ "valid_from": "2026-04-06",
+ "valid_to": "2027-04-05",
+ "years": {
+  "2026/27": {
+   "label": "2026/27",
+   "start": "2026-04-06",
+   "end": "2027-04-05",
+   "personalAllowance": 12570,
+   "taperThreshold": 100000,
+   "basicRateLimit": 37700,
+   "higherRateLimit": 125140,
+   "mainRates": {
+    "basic": 0.2,
+    "higher": 0.4,
+    "additional": 0.45
+   },
+   "mainRatesSet": true,
+   "savingsRates": {
+    "basic": 0.2,
+    "higher": 0.4,
+    "additional": 0.45
+   },
+   "startingRateLimit": 5000,
+   "psa": {
+    "basic": 1000,
+    "higher": 500,
+    "additional": 0
+   },
+   "scotland": [
+    {
+     "name": "starter",
+     "upTo": 3967,
+     "rate": 0.19
+    },
+    {
+     "name": "basic",
+     "upTo": 16956,
+     "rate": 0.2
+    },
+    {
+     "name": "intermediate",
+     "upTo": 31092,
+     "rate": 0.21
+    },
+    {
+     "name": "higher",
+     "upTo": 62430,
+     "rate": 0.42
+    },
+    {
+     "name": "advanced",
+     "upTo": 125140,
+     "rate": 0.45
+    },
+    {
+     "name": "top",
+     "upTo": null,
+     "rate": 0.48
+    }
+   ],
+   "isa": {
+    "overall": 20000,
+    "cashUnder65": 20000,
+    "cashFrom65": 20000,
+    "lisa": 4000,
+    "junior": 9000
+   },
+   "cashInvestmentIsaCharge": 0,
+   "status": "in force"
+  },
+  "2027/28": {
+   "label": "2027/28",
+   "start": "2027-04-06",
+   "end": "2028-04-05",
+   "personalAllowance": 12570,
+   "taperThreshold": 100000,
+   "basicRateLimit": 37700,
+   "higherRateLimit": 125140,
+   "mainRates": {
+    "basic": 0.2,
+    "higher": 0.4,
+    "additional": 0.45
+   },
+   "mainRatesSet": false,
+   "savingsRates": {
+    "basic": 0.22,
+    "higher": 0.42,
+    "additional": 0.47
+   },
+   "startingRateLimit": 5000,
+   "psa": {
+    "basic": 1000,
+    "higher": 500,
+    "additional": 0
+   },
+   "scotland": null,
+   "isa": {
+    "overall": 20000,
+    "cashUnder65": 12000,
+    "cashFrom65": 20000,
+    "lisa": 4000,
+    "junior": 9000
+   },
+   "cashInvestmentIsaCharge": 0.22,
+   "status": "set by law, in force from 6 April 2027"
+  }
+ },
+ "reform": {
+  "budget": "2025-11-26",
+  "financeActAssent": "2026-03-18",
+  "isaRegsMade": "2026-09-10",
+  "isaRegsLaid": "2026-09-14",
+  "inForce": "2027-04-06",
+  "cashLimitAgeRule": "64 or under at the end of the tax year",
+  "limitsFrozenUntil": "April 2031",
+  "digitalReportingFrom": "April 2028"
+ },
+ "lisa": {
+  "annual": 4000,
+  "bonusRate": 0.25,
+  "maxBonus": 1000,
+  "withdrawalCharge": 0.25,
+  "priceCap": 450000,
+  "openMinAge": 18,
+  "openBeforeAge": 40,
+  "payUntilAge": 50,
+  "accessAge": 60,
+  "monthsBeforePurchase": 12,
+  "houseWithdrawals2526": 99750,
+  "avgHouseWithdrawal2526": 15407
+ },
+ "ftbIsa": {
+  "consultationOpened": "2026-06-23",
+  "consultationClosed": "2026-08-18",
+  "priceCap": null,
+  "launch": null
+ },
+ "junior": {
+  "annual": 9000,
+  "controlAge": 16,
+  "accessAge": 18,
+  "parentalInterestLimit": 100
+ },
+ "transfers": {
+  "cashDays": 15,
+  "otherDays": 30
+ },
+ "premiumBonds": {
+  "rate": 0.0435,
+  "odds": 21000,
+  "previousRate": 0.033,
+  "previousOdds": 23000,
+  "min": 25,
+  "max": 50000,
+  "minAge": 16,
+  "drawMonth": "October 2026",
+  "prizes": [
+   {
+    "value": 1000000,
+    "count": 2,
+    "band": "higher"
+   },
+   {
+    "value": 100000,
+    "count": 96,
+    "band": "higher"
+   },
+   {
+    "value": 50000,
+    "count": 191,
+    "band": "higher"
+   },
+   {
+    "value": 25000,
+    "count": 382,
+    "band": "higher"
+   },
+   {
+    "value": 10000,
+    "count": 957,
+    "band": "higher"
+   },
+   {
+    "value": 5000,
+    "count": 1914,
+    "band": "higher"
+   },
+   {
+    "value": 1000,
+    "count": 19934,
+    "band": "medium"
+   },
+   {
+    "value": 500,
+    "count": 59802,
+    "band": "medium"
+   },
+   {
+    "value": 100,
+    "count": 2371145,
+    "band": "lower"
+   },
+   {
+    "value": 50,
+    "count": 2371145,
+    "band": "lower"
+   },
+   {
+    "value": 25,
+    "count": 1721281,
+    "band": "lower"
+   }
+  ],
+  "totalPrizes": 6546849,
+  "totalValue": 498378775,
+  "bandShares": {
+   "higher": 0.1,
+   "medium": 0.1,
+   "lower": 0.8
+  }
+ },
+ "fscs": {
+  "limit": 120000,
+  "from": "2025-12-01"
+ },
+ "stats": {
+  "release": "2026-09-16",
+  "adultAccounts2425": 16800000,
+  "subscribed2425": 135700000000,
+  "marketValue2425": 952000000000,
+  "cashShareAccounts2425": 0.64,
+  "holders2324": 23000000,
+  "maxSubscribersShare2324": 0.288,
+  "juniorAccounts2425": 1600000,
+  "juniorAvgSubscription2425": 1570
+ },
+ "sources": {
+  "gov_isa": {
+   "url": "https://www.gov.uk/individual-savings-accounts",
+   "label": {
+    "en": "GOV.UK, Individual Savings Accounts (ISAs)"
+   }
+  },
+  "gov_isa_how": {
+   "url": "https://www.gov.uk/individual-savings-accounts/how-isas-work",
+   "label": {
+    "en": "GOV.UK, How ISAs work (the £20,000 limit and its split)"
+   }
+  },
+  "gov_isa_withdraw": {
+   "url": "https://www.gov.uk/individual-savings-accounts/withdrawing-your-money",
+   "label": {
+    "en": "GOV.UK, Withdrawing your money from an ISA (flexible ISAs)"
+   }
+  },
+  "gov_isa_transfer": {
+   "url": "https://www.gov.uk/individual-savings-accounts/transferring-your-isa",
+   "label": {
+    "en": "GOV.UK, Transferring your ISA"
+   }
+  },
+  "gov_isa_abroad": {
+   "url": "https://www.gov.uk/individual-savings-accounts/if-you-move-abroad",
+   "label": {
+    "en": "GOV.UK, ISAs if you move abroad"
+   }
+  },
+  "gov_isa_death": {
+   "url": "https://www.gov.uk/individual-savings-accounts/inheriting-an-isa-from-your-spouse-civil-partner",
+   "label": {
+    "en": "GOV.UK, Inheriting an ISA from your spouse or civil partner"
+   }
+  },
+  "gov_lisa": {
+   "url": "https://www.gov.uk/lifetime-isa",
+   "label": {
+    "en": "GOV.UK, Lifetime ISA"
+   }
+  },
+  "gov_lisa_withdraw": {
+   "url": "https://www.gov.uk/lifetime-isa/withdrawing-money-from-your-lifetime-isa",
+   "label": {
+    "en": "GOV.UK, Withdrawing money from your Lifetime ISA"
+   }
+  },
+  "gov_jisa": {
+   "url": "https://www.gov.uk/junior-individual-savings-accounts",
+   "label": {
+    "en": "GOV.UK, Junior Individual Savings Accounts"
+   }
+  },
+  "gov_jisa_add": {
+   "url": "https://www.gov.uk/junior-individual-savings-accounts/add-money-to-an-account",
+   "label": {
+    "en": "GOV.UK, Adding money to a Junior ISA"
+   }
+  },
+  "gov_savings_tax": {
+   "url": "https://www.gov.uk/apply-tax-free-interest-on-savings",
+   "label": {
+    "en": "GOV.UK, Tax on savings interest"
+   }
+  },
+  "gov_savings_free": {
+   "url": "https://www.gov.uk/apply-tax-free-interest-on-savings/how-much-is-tax-free",
+   "label": {
+    "en": "GOV.UK, How much savings interest is tax free"
+   }
+  },
+  "gov_savings_pay": {
+   "url": "https://www.gov.uk/apply-tax-free-interest-on-savings/how-you-pay-tax-on-savings-interest",
+   "label": {
+    "en": "GOV.UK, How you pay tax on savings interest"
+   }
+  },
+  "gov_savings_refund": {
+   "url": "https://www.gov.uk/apply-tax-free-interest-on-savings/previous-tax-years",
+   "label": {
+    "en": "GOV.UK, If you have paid too much tax on your savings"
+   }
+  },
+  "gov_children": {
+   "url": "https://www.gov.uk/savings-for-children",
+   "label": {
+    "en": "GOV.UK, Interest on savings for children"
+   }
+  },
+  "gov_rates": {
+   "url": "https://www.gov.uk/income-tax-rates",
+   "label": {
+    "en": "GOV.UK, Income Tax rates and Personal Allowances"
+   }
+  },
+  "gov_scotland": {
+   "url": "https://www.gov.uk/scottish-income-tax",
+   "label": {
+    "en": "GOV.UK, Income Tax in Scotland (2026 to 2027 rates)"
+   }
+  },
+  "gov_check_tool": {
+   "url": "https://www.gov.uk/guidance/check-how-much-tax-you-pay-on-dividends-and-interest-from-savings",
+   "label": {
+    "en": "GOV.UK, Check how much tax you pay on dividends and interest from savings"
+   }
+  },
+  "gov_tfs19": {
+   "url": "https://www.gov.uk/government/publications/tax-free-savings-newsletter-19/tax-free-savings-newsletter-19-november-2025",
+   "label": {
+    "en": "HM Revenue and Customs, Tax-free savings newsletter 19 (Budget of 26 November 2025)"
+   }
+  },
+  "gov_tfs22": {
+   "url": "https://www.gov.uk/government/publications/tax-free-savings-newsletter-22/tax-free-savings-newsletter-22-june-2026",
+   "label": {
+    "en": "HM Revenue and Customs, Tax-free savings newsletter 22 (ISA reform, June 2026)"
+   }
+  },
+  "gov_isa_regs_consult": {
+   "url": "https://www.gov.uk/government/consultations/the-individual-savings-account-amendment-regulations-2026",
+   "label": {
+    "en": "GOV.UK, Technical consultation on the Individual Savings Account (Amendment) Regulations 2026"
+   }
+  },
+  "gov_ftb_isa": {
+   "url": "https://www.gov.uk/government/consultations/first-time-buyer-isa-consultation",
+   "label": {
+    "en": "GOV.UK, First Time Buyer ISA consultation (June 2026)"
+   }
+  },
+  "gov_stats": {
+   "url": "https://www.gov.uk/government/statistics/annual-savings-statistics-2026/commentary-for-annual-savings-statistics-september-2026",
+   "label": {
+    "en": "HM Revenue and Customs, Annual savings statistics, September 2026"
+   }
+  },
+  "leg_si_1018": {
+   "url": "https://www.legislation.gov.uk/uksi/2026/1018/contents/made",
+   "label": {
+    "en": "The Individual Savings Account (Amendment) (No. 2) Regulations 2026, SI 2026/1018"
+   }
+  },
+  "leg_isa_regs": {
+   "url": "https://www.legislation.gov.uk/uksi/1998/1870/contents",
+   "label": {
+    "en": "The Individual Savings Account Regulations 1998"
+   }
+  },
+  "leg_fa26_s3": {
+   "url": "https://www.legislation.gov.uk/ukpga/2026/11/section/3",
+   "label": {
+    "en": "Finance Act 2026, section 3 (savings rates for 2026-27)"
+   }
+  },
+  "leg_fa26_s5": {
+   "url": "https://www.legislation.gov.uk/ukpga/2026/11/section/5",
+   "label": {
+    "en": "Finance Act 2026, section 5 (savings rates for 2027-28)"
+   }
+  },
+  "leg_fa26_s9": {
+   "url": "https://www.legislation.gov.uk/ukpga/2026/11/section/9",
+   "label": {
+    "en": "Finance Act 2026, section 9 (starting rate limit for savings frozen at £5,000)"
+   }
+  },
+  "leg_fa26_s10": {
+   "url": "https://www.legislation.gov.uk/ukpga/2026/11/section/10",
+   "label": {
+    "en": "Finance Act 2026, section 10 (basic rate limit and Personal Allowance to 2030-31)"
+   }
+  },
+  "leg_ita_12a": {
+   "url": "https://www.legislation.gov.uk/ukpga/2007/3/section/12A",
+   "label": {
+    "en": "Income Tax Act 2007, section 12A (savings nil rate)"
+   }
+  },
+  "leg_ita_12b": {
+   "url": "https://www.legislation.gov.uk/ukpga/2007/3/section/12B",
+   "label": {
+    "en": "Income Tax Act 2007, section 12B (savings allowance of £1,000, £500 or nil)"
+   }
+  },
+  "leg_ita_11d": {
+   "url": "https://www.legislation.gov.uk/ukpga/2007/3/section/11D",
+   "label": {
+    "en": "Income Tax Act 2007, section 11D (savings rates, Scottish taxpayers)"
+   }
+  },
+  "leg_ita_35": {
+   "url": "https://www.legislation.gov.uk/ukpga/2007/3/section/35",
+   "label": {
+    "en": "Income Tax Act 2007, section 35 (Personal Allowance and its taper)"
+   }
+  },
+  "leg_ita_10": {
+   "url": "https://www.legislation.gov.uk/ukpga/2007/3/section/10",
+   "label": {
+    "en": "Income Tax Act 2007, section 10 (basic and higher rate limits)"
+   }
+  },
+  "leg_ittoia_629": {
+   "url": "https://www.legislation.gov.uk/ukpga/2005/5/section/629",
+   "label": {
+    "en": "Income Tax (Trading and Other Income) Act 2005, section 629 (income paid to a parent's child)"
+   }
+  },
+  "nsi_pb": {
+   "url": "https://www.nsandi.com/products/premium-bonds",
+   "label": {
+    "en": "NS&I, Premium Bonds (prize fund rate and odds)"
+   }
+  },
+  "nsi_alloc": {
+   "url": "https://www.nsandi.com/get-to-know-us/monthly-prize-allocation",
+   "label": {
+    "en": "NS&I, How we share out Premium Bonds prizes (October 2026 draw)"
+   }
+  },
+  "fscs": {
+   "url": "https://www.fscs.org.uk/what-we-cover/banks-building-societies/",
+   "label": {
+    "en": "FSCS, Protection of bank and building society deposits (£120,000)"
+   }
+  },
+  "gov_aps": {
+   "url": "https://www.gov.uk/guidance/manage-additional-permitted-subscriptions-into-an-isa",
+   "label": {
+    "en": "HMRC, Manage additional permitted subscriptions into an ISA (guidance for ISA managers)"
+   }
+  },
+  "hmrc_saim2440": {
+   "url": "https://www.gov.uk/hmrc-internal-manuals/savings-and-investment-manual/saim2440",
+   "label": {
+    "en": "HMRC, Savings and Investment Manual SAIM2440 (when interest arises)"
+   }
+  },
+  "hmrc_tsem9814": {
+   "url": "https://www.gov.uk/hmrc-internal-manuals/trusts-settlements-and-estates-manual/tsem9814",
+   "label": {
+    "en": "HMRC, Trusts, Settlements and Estates Manual TSEM9814 (joint income of couples)"
+   }
+  },
+  "gov_form17": {
+   "url": "https://www.gov.uk/government/publications/income-tax-declaration-of-beneficial-interests-in-joint-property-and-income-17",
+   "label": {
+    "en": "GOV.UK, Form 17: declaration of beneficial interests in joint property and income"
+   }
+  },
+  "gov_state_pension": {
+   "url": "https://www.gov.uk/new-state-pension/what-youll-get",
+   "label": {
+    "en": "GOV.UK, New State Pension: what you'll get"
+   }
+  },
+  "gov_lisa_ftb_withdrawal": {
+   "url": "https://www.gov.uk/guidance/lifetime-isa-withdrawals-for-a-first-time-residential-purchase",
+   "label": {
+    "en": "HMRC, Lifetime ISA withdrawals for a first-time residential purchase"
+   }
+  },
+  "gov_lisa_conveyancer": {
+   "url": "https://www.gov.uk/government/publications/conveyancers-lifetime-isa-technical-guidance/conveyancers-lifetime-isa-technical-guidance",
+   "label": {
+    "en": "HMRC, Conveyancers: Lifetime ISA technical guidance"
+   }
+  },
+  "gov_ctf": {
+   "url": "https://www.gov.uk/child-trust-funds",
+   "label": {
+    "en": "GOV.UK, Child Trust Funds"
+   }
+  },
+  "gov_pension_relief": {
+   "url": "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief",
+   "label": {
+    "en": "GOV.UK, Tax on your private pension: pension tax relief"
+   }
+  }
+ },
+ "statePension": {
+  "fullNewWeekly": 241.3,
+  "year": "2026/27"
+ }
+}

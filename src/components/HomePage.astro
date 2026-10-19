@@ -1,0 +1,111 @@
+---
+/**
+ * Home: the ISA against taxable account calculator on the first screen, then the grid nobody else
+ * publishes (what an ISA is worth by income and balance, both years), the April 2027 timeline and the
+ * four layers of tax-free interest (RECETTE §5, §21). Every figure comes from the engines.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import Tool from './Tool.astro';
+import { route } from '../i18n/routes';
+import { PAGES } from '../lib/guides';
+import { groupLabel, GROUPS_ORDER } from '../i18n/nav';
+import { helpers } from '../lib/helpers';
+import { LAST_UPDATED, AUTHOR_NAME } from '../data/site-config';
+import { displayDate } from '../lib/format';
+import { faqSchema, webApplicationSchema, websiteSchema, organizationSchema } from '../lib/seo';
+const lang = 'en';
+const h = helpers(true);
+const { P, S, PB, m, m2, pc, Y1, Y2 } = h;
+const A = h.y(Y1), B = h.y(Y2);
+const RATE = 0.04;
+const incomes = [16000, 35000, 52000, 75000, 110000, 150000];
+const balances = [20000, 50000, 100000];
+const gain = (inc: number, bal: number, y: typeof Y1) => S.interestTax(y, inc, bal * RATE).tax;
+const grid = incomes.map((inc) => [m(inc), ...balances.flatMap((b) => [m(gain(inc, b, Y1)), m(gain(inc, b, Y2))])]);
+const ex = S.compare({ nonSavings: 52000, balance: 50000, rate: RATE });
+const pensioner = S.interestTax(Y1, 16000, 100000 * RATE);
+const freeBasic = S.taxFreeBalance(Y1, 35000, RATE);
+const freeHigher = S.taxFreeBalance(Y1, 60000, RATE);
+const pb = PB.simulate(25000);
+const pbEq = S.grossEquivalentRate(Y2, 60000, 25000, pb.median);
+const nSrc = Object.keys(P.sources).length;
+const faqs = [
+  { q: 'Is a cash ISA worth it if I pay no tax on my interest?', a: `Not for the tax, today. A basic rate taxpayer can earn ${m(A.psa.basic)} of interest tax free, which at ${pc(RATE, 0)} covers about ${m(freeBasic)} of savings. A cash ISA still keeps future interest out of tax if rates, balances or your income rise, and the 2027/28 rates make every taxable pound above the allowance cost more. If a taxable account pays clearly more than the best cash ISA, it can be the better home for money under that level.` },
+  { q: 'What is the ISA allowance for 2026/27 and 2027/28?', a: `${m(A.isa.overall)} in each year, split as you like between cash, stocks and shares, innovative finance and a Lifetime ISA, which takes ${m(A.isa.lisa)} at most. From 6 April 2027 no more than ${m(B.isa.cashUnder65)} of it can go into cash ISAs if you are 64 or under on 5 April 2028; savers aged 65 or over keep ${m(B.isa.cashFrom65)} in cash. The Budget of November 2025 froze the overall limits until April 2031.` },
+  { q: 'Do I lose my ISA if the cash limit falls to £12,000?', a: `No. Money already in a cash ISA stays there and stays tax free; the new limit only caps what you pay in during a tax year. What changes for under-65s is that transfers from a stocks and shares ISA into a cash ISA will be refused, and cash left inside an investment ISA will bear a ${pc(B.cashInvestmentIsaCharge, 0)} charge on its interest.` },
+  { q: 'How much tax will I pay on savings interest from April 2027?', a: `Only on interest above your allowances, at ${pc(B.savingsRates.basic, 0)}, ${pc(B.savingsRates.higher, 0)} or ${pc(B.savingsRates.additional, 0)} instead of 20, 40 or 45 %. The Personal Allowance, the ${m(A.startingRateLimit)} starting rate and the Personal Savings Allowance are unchanged, so a saver who pays nothing now still pays nothing. Someone on ${m(52000)} with ${m(50000)} at ${pc(RATE, 0)} goes from ${m2(ex[0].taxable.tax)} to ${m2(ex[1].taxable.tax)}.` },
+  { q: 'Are Premium Bonds better than a savings account?', a: `It depends on your tax band and on luck. Prizes are tax free and the prize fund rate is ${pc(P.premiumBonds.rate, 2)}, but that is an average pulled up by rare large prizes. On ${m(25000)} the median holder wins about ${m(pb.median)} a year. For a higher rate taxpayer that equals a taxable account paying ${pc(pbEq, 2)} in 2027/28; a basic rate taxpayer needs much less, so for most people a good account wins.` },
+  { q: 'Does this calculator work for Scotland?', a: 'Yes. Savings interest is taxed at UK rates and on UK bands even for Scottish taxpayers, and the Personal Savings Allowance follows the UK higher rate threshold, so the tax on your interest is the same as elsewhere. The only Scottish part is the extra tax on wages when interest tapers the Personal Allowance above £100,000; choose Scotland under "More" for that.' },
+];
+const jsonLd = [webApplicationSchema({ name: 'ISA or taxable account calculator 2026/27 and 2027/28', description: 'Tax on savings interest in a taxable account against a cash ISA, by income, for 2026/27 and 2027/28.', path: route('home', lang), lang }), websiteSchema(lang), organizationSchema(lang), faqSchema(faqs, lang)];
+const groups = GROUPS_ORDER.map((g) => ({ g, pages: PAGES.filter((p) => p.group === g) })).filter((x) => x.pages.length);
+const timeline = [
+  { d: P.reform.budget, t: 'Budget: cash ISA limit of £12,000 for under-65s and savings rates up 2 points, both from April 2027, announced.' },
+  { d: P.reform.financeActAssent, t: 'Finance Act 2026 receives Royal Assent: savings rates of 22, 42 and 47 % for 2027/28 become law.' },
+  { d: P.ftbIsa.consultationOpened, t: 'Consultation on a First Time Buyer ISA to replace the Lifetime ISA for new savers; it closed on 18 August 2026.' },
+  { d: P.reform.isaRegsMade, t: 'ISA (Amendment) (No. 2) Regulations 2026 made: the £12,000 cash limit, the transfer ban and the charge on cash in investment ISAs.' },
+  { d: P.reform.inForce, t: 'Both changes take effect on the first day of the 2027/28 tax year.' },
+];
+---
+<PageLayout title="ISA or Savings Account 2026/27: Tax on Interest and 2027/28" description="ISA or taxable savings account? The tax on your interest for your income in 2026/27 and at the 22/42/47 % rates of 2027/28, with the £12,000 cash ISA limit." lang={lang} jsonLd={jsonLd} faqs={faqs}>
+  <header class="mb-3">
+    <h1 class="text-[1.75rem] font-bold text-navy-900 max-sm:leading-tight sm:text-3xl md:text-4xl">ISA or taxable account: the tax on your interest, 2026/27 and 2027/28</h1>
+    <p class="mt-2 text-base text-navy-700 sm:text-lg">Enter your income, your savings and the rate. You get the tax you would pay on that interest outside an ISA this year and from 6 April 2027, line by line.</p>
+  </header>
+  <div data-outil class="mb-4"><Tool tool={{ kind: 'isa', props: { income: 52000, balance: 50000, rate: 4 } }} primary={true} /></div>
+  <p class="mb-8 text-sm text-navy-600">Rules of {P.taxYear} and {P.nextTaxYear} as set by the Finance Act 2026 and SI 2026/1018 · last updated <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-GB')}</time> · {AUTHOR_NAME} · <a href={route('method', lang)} class="underline hover:text-navy-900">How the sums are done</a> · <a href={route('about', lang)} class="underline hover:text-navy-900">About this site</a></p>
+
+  <div class="prose prose-slate max-w-none">
+    <p>This site does better than the first Google result, GOV.UK's page on Individual Savings Accounts, which gives the {m(A.isa.overall)} allowance for {Y1} but no figure for the tax an ISA saves, because it works out that tax for your own income: the same balance at the same rate in a taxable account and in an ISA, with the Personal Allowance, the {m(A.startingRateLimit)} starting rate for savings and the Personal Savings Allowance applied in the order the law sets, for {Y1} and again for {Y2}, when the savings rates rise to {pc(B.savingsRates.basic, 0)}, {pc(B.savingsRates.higher, 0)} and {pc(B.savingsRates.additional, 0)} and the cash ISA limit falls to {m(B.isa.cashUnder65)} for savers under 65. Banks and platforms explain the allowance; none of the pages that rank shows what the ISA is worth to a particular saver. Nothing is sold here and no account is ranked: the only number that matters is your own.</p>
+  </div>
+
+  <section class="not-prose my-10" aria-labelledby="grid-title">
+    <h2 id="grid-title" class="text-2xl font-bold text-navy-900">What an ISA saves a year, by income and balance</h2>
+    <p class="mt-2 max-w-3xl text-navy-700">Tax you would pay on the interest in a taxable account, which is what a cash ISA saves you. Interest at {pc(RATE, 0)} a year, no other savings, rest of the UK. Two figures per balance: {Y1}, then {Y2}.</p>
+    <Fragment set:html={h.table(['Income before tax', ...balances.flatMap((b) => [`${m(b)} · ${Y1}`, `${m(b)} · ${Y2}`])], grid, undefined, ['l', 'r', 'r', 'r', 'r', 'r', 'r'])} />
+  </section>
+
+  <div class="prose prose-slate max-w-none">
+    <h2>Four layers of tax-free interest, in a fixed order</h2>
+    <p>Most savers in the UK pay no tax on their interest, and the reason is not one allowance but four, applied one after the other. The calculator follows the order of the Income Tax Act 2007, because the order changes the answer.</p>
+    <ol>
+      <li><strong>What is left of your Personal Allowance.</strong> {m(A.personalAllowance)}, used first by wages and pensions. Only people whose other income is below it have any left for interest.</li>
+      <li><strong>The starting rate for savings.</strong> Up to {m(A.startingRateLimit)} of interest at 0 %, but only inside the lowest {m(A.startingRateLimit)} of taxable income. Each pound of other income above the Personal Allowance removes a pound of it, so it disappears at {m(A.personalAllowance + A.startingRateLimit)} of income. Frozen at {m(A.startingRateLimit)} until 2030/31 by section 9 of the Finance Act 2026.</li>
+      <li><strong>The Personal Savings Allowance.</strong> {m(A.psa.basic)} if your total income stays in the basic rate band, {m(A.psa.higher)} if it reaches the higher rate, nothing at the additional rate. The interest itself counts when your band is decided.</li>
+      <li><strong>The rate of your band.</strong> {pc(A.savingsRates.basic, 0)}, {pc(A.savingsRates.higher, 0)} or {pc(A.savingsRates.additional, 0)} in {Y1}; {pc(B.savingsRates.basic, 0)}, {pc(B.savingsRates.higher, 0)} or {pc(B.savingsRates.additional, 0)} in {Y2}.</li>
+    </ol>
+    <p>Two examples show how far apart savers are. A retired saver with {m(16000)} of pension and {m(100000)} earning {pc(RATE, 0)} pays {m2(pensioner.tax)} on {m(100000 * RATE)} of interest, because the starting rate and the allowance absorb most of it. A worker on {m(52000)} with half that balance pays {m2(ex[0].taxable.tax)} this year and {m2(ex[1].taxable.tax)} in {Y2}: the interest pushes the total over the higher rate threshold, which halves the allowance. At {pc(RATE, 0)}, a basic rate taxpayer can hold about {m(freeBasic)} in taxable accounts before paying anything, a higher rate taxpayer about {m(freeHigher)}.</p>
+  </div>
+
+  <section class="not-prose my-10" aria-labelledby="tl-title">
+    <h2 id="tl-title" class="text-2xl font-bold text-navy-900">The road to 6 April 2027</h2>
+    <ol class="mt-4 space-y-3 border-l-2 border-accent-500 pl-5">
+      {timeline.map((x) => <li><p class="text-sm font-semibold text-accent-700"><time datetime={x.d}>{displayDate(x.d, 'en-GB')}</time></p><p class="text-navy-800">{x.t}</p></li>)}
+    </ol>
+  </section>
+
+  <div class="prose prose-slate max-w-none">
+    <h2>What is already law, and what is still to come</h2>
+    <p>Everything the calculator uses for {Y2} is in force law that starts on 6 April 2027: the savings rates are in section 5 of the <Fragment set:html={h.src('leg_fa26_s5', 'Finance Act 2026')} />, the frozen Personal Allowance and basic rate band in section 10, and the ISA changes in <Fragment set:html={h.src('leg_si_1018', 'the Individual Savings Account (Amendment) (No. 2) Regulations 2026')} />, made on {h.date(P.reform.isaRegsMade)} and laid before Parliament on {h.date(P.reform.isaRegsLaid)}. Two things are not settled. The main rates of income tax on wages for {Y2} will be set by next year's Finance Act; they only matter here for someone whose interest tapers their Personal Allowance, and the calculator says when it uses this year's rates for that. The Scottish rates for {Y2} will be set in the Scottish Budget, expected early in 2027. And the First Time Buyer ISA has been consulted on but has no launch date or price cap yet; until it opens, the Lifetime ISA stays open on its current rules.</p>
+    <p>The ISA changes are detailed on the <Fragment set:html={h.a('cash-isa-changes', 'cash ISA changes page')} />, with the age test on the <Fragment set:html={h.a('isa-over-65', 'page for savers aged 65 and over')} />. The rates are on the <Fragment set:html={h.a('savings-tax-rates-2027', '2027/28 savings tax page')} />.</p>
+
+    <h2>Premium Bonds, by the same arithmetic</h2>
+    <p>Premium Bonds pay no interest. Each £1 Bond has a 1 in {h.num(P.premiumBonds.odds)} chance a month of a tax-free prize, and the prizes add up to a prize fund rate of {pc(P.premiumBonds.rate, 2)} as published by NS&amp;I for the {P.premiumBonds.drawMonth} draw. That is an average: two £1 million prizes a month pull it up, and most holders get less. Simulating {h.num(4000)} years of draws on the October 2026 prize table, {m(25000)} of Bonds wins a median of {m(pb.median)} a year against an average of {m(pb.mean)}. The <Fragment set:html={h.a('premium-bonds-calculator', 'Premium Bonds calculator')} /> sets this against a taxable account after tax for your income, and the <Fragment set:html={h.a('premium-bonds-odds', 'odds page')} /> gives the chances month by month.</p>
+
+    <h2>Where the figures come from</h2>
+    <p>Rates, bands and allowances come from legislation.gov.uk and GOV.UK: the <Fragment set:html={h.src('leg_ita_12a', 'Income Tax Act 2007')} /> as amended, the Finance Act 2026, the ISA regulations and HMRC's <Fragment set:html={h.src('gov_savings_free', 'guidance on tax-free interest')} />. Prizes come from NS&amp;I's <Fragment set:html={h.src('nsi_alloc', 'monthly prize allocation')} />. The parameter file cites {nSrc} official pages, each read on {h.date(P.retrieved_at)}, and the engine is tested against GOV.UK's own worked examples. The <a href={route('method', lang)}>method page</a> lists every rule and what is left out; the <a href={route('about', lang)}>about page</a> says who publishes the site and how to report an error.</p>
+    <p>What the calculator does not do: dividends, foreign interest, the Marriage Allowance and the Blind Person's Allowance are left out, and it assumes interest is paid in the year you choose. It never sees your accounts and nothing you type leaves your browser. It is not advice and it recommends no provider.</p>
+  </div>
+
+  <section class="mt-12" aria-labelledby="guides-title">
+    <h2 id="guides-title" class="text-2xl font-bold text-navy-900">Every calculator and guide</h2>
+    <div class="mt-4 grid gap-x-10 gap-y-6 md:grid-cols-2">
+      {groups.map(({ g, pages }) => (
+        <div>
+          <h3 class="border-b border-navy-200 pb-1 text-sm font-semibold uppercase tracking-wide text-navy-600">{groupLabel(g)}</h3>
+          <ul class="mt-2 space-y-2">{pages.map((p) => <li><a href={route(p.id, lang)} class="font-medium text-accent-700 underline-offset-2 hover:underline">{p.nav}</a><span class="block text-sm text-navy-600">{p.card}</span></li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</PageLayout>

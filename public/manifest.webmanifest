@@ -1,0 +1,21 @@
+{
+ "name": "ISA Sums",
+ "short_name": "ISA Sums",
+ "description": "Tax on savings interest for your income in 2026/27 and 2027/28, set against a cash ISA: allowances, the 22/42/47 % rates, the £12,000 cash ISA limit, Premium Bonds.",
+ "start_url": "/en/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#0F5A47",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

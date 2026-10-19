@@ -1,0 +1,6 @@
+# National Savings and Investments, executive agency of HM Treasury that issues Premium Bonds and publishes the prize fund rate, odds and monthly prize allocation
+nsandi.com
+# Financial Services Compensation Scheme, the statutory body that protects UK deposits (limit of £120,000 since 1 December 2025)
+fscs.org.uk
+# Bank of England, sets Bank Rate and hosts the Prudential Regulation Authority
+bankofengland.co.uk

@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+const lang = 'en';
+---
+<PageLayout title={`Editorial policy of ${SITE_NAMES[lang]}: law, tests, corrections`} description="Which laws and official pages ISA Sums uses for savings tax, ISAs and Premium Bonds, which sources it refuses, how the engine is tested, how a 2027 rule is dated and how errors are fixed." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial and corrections policy</h1>
+    <p>People use these figures to choose where to keep their savings, to decide whether to fill a cash ISA before April 2027 or to check a letter from HMRC. A rate applied to the wrong year or an allowance in the wrong order changes the answer, so every figure on the site points back to the law or the official page it came from.</p>
+    <h2>Who is responsible</h2><p>{AUTHOR_NAME}, reachable at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>The sources we use</h2>
+    <ul>
+      <li>legislation.gov.uk for the law itself: the Income Tax Act 2007 as amended (sections 7 to 12B, 35), the Finance Act 2026, the Individual Savings Account Regulations 1998 and the amending regulations of 2026, including SI 2026/1018;</li>
+      <li>GOV.UK and HMRC guidance for how the rules are applied, the worked examples we test against, the Scottish rates and HMRC's ISA statistics;</li>
+      <li>NS&amp;I for the Premium Bonds prize fund rate, odds and monthly prize allocation;</li>
+      <li>the Financial Services Compensation Scheme for the deposit protection limit.</li>
+    </ul>
+    <h2>Sources we refuse</h2><p>Banks, building societies, platforms, comparison sites and other calculators never provide a figure here, however well they rank. In October 2026 several of them still showed an allowance of an earlier year or ignored the April 2027 changes. When an official page contradicts itself, as NS&amp;I's did on the month a new prize rate started, we say so on the page rather than choose silently.</p>
+    <h2>Rules that are not yet in force</h2><p>A 2027/28 figure is shown only when it is already law, with the date it takes effect. The main income tax rates and the Scottish rates for 2027/28 are not set yet: where they matter, the page says which assumption is used and that it is an assumption. A consultation, such as the one on a First Time Buyer ISA, is described as a consultation, never as a rule.</p>
+    <h2>Testing</h2><p>Every build runs the engine tests: the worked examples of HMRC's guidance on tax-free interest and on the Personal Savings Allowance, the Lifetime ISA charge examples of GOV.UK, the flexible ISA example and the Premium Bonds prize fund rate recomputed from the published allocation. A failing test stops the build.</p>
+    <h2>Review cycle</h2><p>Allowances and rates change at the Budget and take effect on 6 April. We re-read the parameter file after each fiscal event, when a statutory instrument on ISAs is made, and each month for the Premium Bonds prize table. Each page shows the date the rules were last read.</p>
+    <h2>Corrections</h2>
+    <ol><li>We open the law or the official page again.</li><li>We correct the parameter file or the engine, and add a test for the case.</li><li>The pages rebuild and show the new date.</li></ol>
+    <h2>Independence</h2><p>No bank, platform, adviser or government body pays for or reviews what is published here, and the site carries no affiliate link. See also the <a href={route('method', lang)}>method</a>. Version: {LAST_UPDATED}.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,31 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { LAST_UPDATED, AUTHOR_NAME, CONTACT_EMAIL, AUTHOR_ROLE } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { personSchema, organizationSchema, breadcrumbSchema, profilePageSchema } from '../../lib/seo';
+import { displayDate } from '../../lib/format';
+import { PAGES } from '../../lib/guides';
+import { P } from '../../lib/engine/params';
+const lang = 'en';
+const n = PAGES.length + 1;
+const nSrc = Object.keys(P.sources).length;
+---
+<PageLayout title="ISA Sums publisher: who works out your savings tax, and how" description="Who works out the tax on your savings interest for ISA Sums, why it covers 2026/27 and 2027/28, where its rules come from and what it will never sell you." lang={lang} jsonLd={[personSchema(lang), organizationSchema(lang), profilePageSchema({ path: route('about', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'About', path: route('about', lang) }])]} breadcrumbs={[{ label: 'About' }]}>
+  <header class="mb-6"><p class="kicker">About</p><h1 class="mt-1 text-3xl font-bold text-navy-900 md:text-4xl">Who does the sums on ISA Sums</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <div class="not-prose mb-6"><p class="text-lg font-semibold text-navy-900">{AUTHOR_NAME}</p><p class="text-navy-700">{AUTHOR_ROLE[lang]}</p></div>
+    <p>ISA Sums is published by Radif Partners, an independent company that builds free calculators on public rules. This one is for UK savers who want a number rather than a slogan: someone choosing between a cash ISA and an easy access account paying a little more, a retired saver wondering whether interest above the allowance is taxed at all, a higher rate taxpayer whose fixed-rate bond matures next year, a parent opening a Junior ISA, or anyone with more than {'£'}12,000 a year to put aside once the cash ISA limit falls in April 2027.</p>
+    <h2>Why this site exists</h2>
+    <p>Search for ISA rules and the first result is GOV.UK, which gives the allowances and then stops. In October 2026 it still did not mention the {'£'}12,000 cash ISA limit for under-65s that the regulations made in September set for 6 April 2027. The banks and platforms that rank next explain the allowance to sell their own account; one carried a heading for the 2024/25 allowance on a page dated 2022, and the one bank calculator we found ignored savers whose other income was below the starting rate threshold and knew nothing of 2027. None of them showed the tax an ISA saves a given person.</p>
+    <p>So this site does better than the first Google result because it works out, for your own income, the tax you would pay on a balance in a taxable account against the same balance in an ISA, applying the Personal Allowance, the {'£'}5,000 starting rate for savings and the Personal Savings Allowance in the order the law sets, for 2026/27 and for 2027/28, when savings rates rise to 22, 42 and 47 %, with the same arithmetic for Premium Bonds.</p>
+    <h2>Where the numbers come from</h2>
+    <p>Rates, bands and allowances come from legislation.gov.uk (the Income Tax Act 2007 as amended, the Finance Act 2026, the ISA regulations and the statutory instrument of September 2026) and from GOV.UK and HMRC. Premium Bonds figures come from NS&amp;I's published prize allocation. All of them sit in one parameter file, each with the page it was read on: {nSrc} official pages, all read on {displayDate(P.retrieved_at, 'en-GB')}. The engine is tested against the worked examples HMRC prints in its own guidance, and a failing test stops the site from being built. The <a href={route('method', lang)}>method page</a> lists each rule and what is left out.</p>
+    <h2>What we are not</h2>
+    <p>We are not HMRC, NS&amp;I, a bank, a platform or a financial adviser. We cannot see your accounts, your tax code or your ISA subscriptions. The figures are an estimate of the rules applied to the numbers you type: HMRC's calculation, based on what your bank reports, is the one that counts, and a decision about where to put your money is yours.</p>
+    <h2>How the site is paid for</h2>
+    <p>It is free and needs no account or email. We sell no savings account, ISA, investment or advice, take no commission, rank no provider and link to no firm that does. If advertising is added one day, it will never sit above a calculator, it will never be for a savings product chosen by us, and it cannot use what you type because nothing you type leaves your browser.</p>
+    <h2>Tell us when a figure is wrong</h2>
+    <p>Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> with the income, balance and rate you used and the figure you expected, ideally with the HMRC page or letter that shows it. The <a href={route('editorial', lang)}>editorial policy</a> explains how a correction is made. The site has {n} indexed pages; the full list is on the home page.</p>
+    <p class="text-sm text-navy-600">Rules last read on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-GB')}</time>.</p>
+  </div>
+</PageLayout>
