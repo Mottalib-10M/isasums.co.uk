@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://uk-isa.example/sitemap-index.xml
+Sitemap: https://isasums.co.uk/sitemap-index.xml

@@ -1,5 +1,5 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://uk-isa.example";
+export const SITE_URL = "https://isasums.co.uk";
 export const SITE_NAMES: Record<string, string> = {"en": "ISA Sums"};
 export const LANG_TAGS: Record<string, string> = {"en": "en-GB"};
 export const OG_LOCALES: Record<string, string> = {"en": "en_GB"};
@@ -16,7 +16,7 @@ export const AUTHOR_DESC: Record<string, string> = {"en": "Radif Partners builds
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"en": ["Individual Savings Accounts and the annual ISA allowance", "Cash ISA limit from April 2027", "Lifetime ISA bonus and withdrawal charge", "Junior ISA", "Personal Savings Allowance and the starting rate for savings", "Savings rates of income tax for 2027/28", "Premium Bonds prize fund rate and odds"]};
-export const CONTACT_EMAIL = "contact@uk-isa.example";
+export const CONTACT_EMAIL = "contact@isasums.co.uk";
 export const THEME_COLOR = '#0F5A47';
 export const LOGO_SYMBOL = 'ISA';
 export const BING_VERIFY_CODE = '';
