@@ -13,7 +13,7 @@ export default definePage({
   title: 'Savings Income Over £100,000: Interest and the 60 % Zone',
   description: 'Savings income over £100,000: each £2 of interest removes £1 of Personal Allowance, so interest up to £125,140 costs 60 %, then 45 % with no allowance.',
   h1: 'Savings interest above £100,000: the allowance taper',
-  intro: 'Enter your other income, your taxable interest and any gross Gift Aid or relief-at-source pension contributions. The tool shows the full cost of the interest, including the tax it adds to your pay.',
+  intro: 'Enter your other income, your taxable interest and any gross Gift Aid or relief-at-source pension contributions. The tool shows the full cost of savings income over £100,000, including the tax it adds to your pay.',
   resume: (h) => {
     const Y1 = h.y(h.Y1);
     const t = h.tax(h.Y1, 100000, 5000);
@@ -30,7 +30,7 @@ export default definePage({
     const incomes = [95000, 100000, 105000, 115000, 121000, 130000];
     const rows = incomes.map((ns) => { const a = h.tax(h.Y1, ns, 5000); return [h.m(ns), h.m(a.allowanceLost), h.m2(a.savingsPart), h.m2(a.knockOn ?? 0), h.m2(a.tax), h.pc(a.tax / a.interest, 1)]; });
     const ext = h.tax(h.Y1, 100000, 5000, { extension: 5000 });
-    return `<h2>Where the taper comes from</h2>
+    return `<h2>Savings income over £100,000: where the taper comes from</h2>
 <p>${h.src('leg_ita_35', 'Section 35 of the Income Tax Act 2007')} reduces the Personal Allowance by half of the amount by which adjusted net income exceeds ${h.m(Y1.taperThreshold)}. With the standard ${h.m(Y1.personalAllowance)} allowance, nothing is left at ${h.m(Y1.higherRateLimit)}. The ${h.src('gov_rates', 'GOV.UK Income Tax rates page')} gives the same figures. Because interest is income, it pushes adjusted net income up in the same way as a bonus would.</p>
 <p>The salary is taxed first, so the allowance it would have used is the one that disappears. The extra tax therefore shows up on pay rather than on the interest line, and is easy to miss when looking only at the savings figures. The tool and the table below add the two together.</p>
 ${h.table(['Salary', 'Allowance lost', 'Tax on the interest itself', 'Extra tax on salary', 'Total', 'Effective rate'], rows, `Cost of ${h.m(5000)} of taxable interest by salary, ${h.Y1}, no pension or Gift Aid deductions. Computed by this site's engine.`, ['l', 'r', 'r', 'r', 'r', 'r'])}

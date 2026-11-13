@@ -13,7 +13,7 @@ export default definePage({
   title: 'ISA Transfer Rules: 15 Working Days and the 2027 Ban',
   description: 'ISA transfers move savings to a new provider without using allowance: 15 working days between cash ISAs, 30 days for others. From 2027, none into cash under 65.',
   h1: 'ISA transfers: moving your savings without losing the tax shelter',
-  intro: 'Enter the balance you want to move, the rate it earns now and the rate on offer elsewhere. The tool shows the extra tax-free interest a year and the time limit for the move.',
+  intro: 'Enter the ISA balance you want to transfer, the rate it earns now and the rate on offer elsewhere. The tool shows the extra tax-free interest a year and the time limit for the move.',
   resume: (h) => {
     const T = h.P.transfers;
     return `An ISA transfer moves money from one ISA to another, with the same or a different provider, without it leaving the tax shelter and without using the current year’s allowance. GOV.UK says the investment can have been made this year or in previous years, and that all or part of an ISA can be moved at any time. The new provider handles it: you fill in its transfer form rather than withdrawing the money yourself. If you withdraw instead, that money loses its ISA status and putting it back in counts as a new payment, unless the account is flexible and you replace it in the same tax year. Transfers between cash ISAs should take no longer than ${T.cashDays} working days, other transfers no longer than ${T.otherDays} calendar days. From 6 April 2027, SI 2026/1018 stops anyone who is under 65 at the end of the tax year moving money from a stocks and shares or innovative finance ISA into a cash ISA. Moves from cash into investments stay open.`;
@@ -32,7 +32,7 @@ export default definePage({
       return [h.m(b), h.m(one), h.m(two), h.m2(taxable)];
     });
     const T = h.P.transfers;
-    return `<h2>How a transfer works</h2>
+    return `<h2>How an ISA transfer works</h2>
 <p>The ${h.src('gov_isa_transfer', 'GOV.UK page on transferring an ISA')} sets the sequence. You contact the provider you want to move to and fill in its ISA transfer form. The providers then deal with each other, which is what keeps the money inside the shelter: GOV.UK warns that withdrawing it yourself means you cannot reinvest that part of your tax-free allowance. You can move the whole ISA or only part of it, to the same type of ISA or a different one.</p>
 <p>The time limits are set out by GOV.UK: ${T.cashDays} working days for transfers between cash ISAs and ${T.otherDays} calendar days for the other kinds. Innovative finance ISAs can transfer their cash, but some of their investments may not be movable. Lifetime ISAs and Junior ISAs have their own transfer limits.</p>
 <h2>What a better rate is worth</h2>

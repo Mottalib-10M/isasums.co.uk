@@ -13,7 +13,7 @@ export default definePage({
   title: 'Lifetime ISA House Price Limit: £450,000 and the 12 Months',
   description: 'Lifetime ISA house price limit of £450,000 on the full price, the 12 month wait, the conveyancer and 90 day rules, and the 25 % charge if the home costs more.',
   h1: 'Lifetime ISA house price limit: the £450,000 cap and the other conditions',
-  intro: 'A Lifetime ISA pays out for a first home only when every condition is met on the day of the withdrawal. This guide goes through them one by one, then shows what a buyer above the cap gives up.',
+  intro: 'A Lifetime ISA pays out for a first home only when every condition is met on the day of the withdrawal. This guide goes through them one by one, then shows what a buyer above the house price limit gives up.',
   resume: (h) => {
     const L = h.P.lisa;
     const c = h.I.lisaCharge(20000);
@@ -43,7 +43,7 @@ export default definePage({
 <li><strong>Conveyancer.</strong> The money goes straight to a conveyancer or solicitor, and the buyer cannot act as their own conveyancer.</li>
 </ul>
 <p>If any one of these is not met, the money can still come out, but it is treated like any other early withdrawal and loses a quarter of its value.</p>
-<h2>Where a price sits against the cap</h2>
+<h2>Where a house price sits against the limit</h2>
 <p>The table takes a pot of ${h.m(24000)}, roughly five years of full payments with the bonus, and shows what reaches the buyer at different prices. The test is a strict comparison: ${h.m(L.priceCap)} exactly is within the limit.</p>
 ${h.table(['Purchase price', 'Within cap', 'Margin', 'Pot of £24,000 gives'], prices, 'Lifetime ISA pot of £24,000 used towards a first home, by purchase price. Worked out by the engine of this site.', ['r', 'l', 'r', 'r'])}
 <p>The cut is abrupt. There is no taper: a buyer at ${h.m(450001)} loses ${h.m(h.I.lisaCharge(24000).charge)} on this pot, the same as a buyer at ${h.m(550000)}. Negotiating the price down to the cap or below is therefore worth exactly that sum to the buyer, on top of the saving on the price itself.</p>

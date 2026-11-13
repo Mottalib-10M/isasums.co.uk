@@ -13,7 +13,7 @@ export default definePage({
   title: 'Lifetime ISA Withdrawal Penalty: the 25 % Charge Worked Out',
   description: 'Lifetime ISA withdrawal penalty: the 25 % charge takes the bonus and 6.25 % of your own money. See what you get back and what to withdraw for the cash you need.',
   h1: 'Lifetime ISA withdrawal penalty: what the 25 % charge takes',
-  intro: 'Enter what you paid in yourself and the cash you need. The tool applies the charge to the whole amount withdrawn, bonus included, and grosses up the withdrawal so the sum left in hand is the one you asked for.',
+  intro: 'Enter what you paid in yourself and the cash you need. The tool applies the Lifetime ISA withdrawal penalty to the whole amount withdrawn, bonus included, and grosses up the withdrawal so the sum left in hand is the one you asked for.',
   resume: (h) => {
     const L = h.P.lisa;
     const c = h.I.lisaCharge(1000);
@@ -33,7 +33,7 @@ export default definePage({
     const need = [120, 1000, 2500, 5000, 10000].map((n) => { const g = h.I.lisaGrossFor(n); return [h.m(n), h.m2(g), h.m2(g - n)]; });
     const grow = [0, 0.02, 0.04].map((g) => { const r = h.I.lisaProjection(30, L.annual, 3, g); const c = h.I.lisaCharge(r.value);
       return [h.pc(g), h.m(r.paid), h.m(r.value), h.m(c.received), h.m(c.received - r.paid)]; });
-    return `<h2>The charge on a full withdrawal</h2>
+    return `<h2>The Lifetime ISA penalty on a full withdrawal</h2>
 <p>When everything is taken out, the ${h.pc(L.withdrawalCharge)} applies to the total in the account, including the government bonus (${h.src('gov_lisa_withdraw', 'GOV.UK, withdrawing money from your Lifetime ISA')}). Without growth, the outcome is always the same share of your own money, whatever the size of the pot.</p>
 ${h.table(['Your payments', 'Pot with bonus', 'Charge', 'You receive', 'Below your payments'], rows, 'Full withdrawal for an unauthorised reason, no growth. Worked out by the engine of this site.', ['r', 'r', 'r', 'r', 'r'])}
 <p>The last column grows in step with the pot: ${h.m(12000)} of savings, three years of full payments, leaves the saver ${h.m(12000 - h.I.lisaCharge(15000).received)} short. That shortfall is the real price of leaving, on top of the bonus that disappears.</p>

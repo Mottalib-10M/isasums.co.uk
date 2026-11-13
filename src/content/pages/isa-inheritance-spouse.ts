@@ -37,7 +37,7 @@ export default definePage({
       ['Up to 3 years after death, or 180 days after the estate is complete if later', 'Last day for a cash APS'],
       ['Within 180 days of the investments passing to the survivor', 'Last day for an in specie APS'],
     ];
-    return `<h2>Two separate things: the account and the allowance</h2>
+    return `<h2>Two separate things a spouse inherits: the ISA and the allowance</h2>
 <p>People often speak of "inheriting an ISA", but two different mechanisms are involved. The first concerns the deceased's own account and what happens to its tax treatment while the estate is dealt with. The second is an allowance given to the surviving spouse or civil partner, which lets them shelter an amount equal to what the deceased held. ${h.src('gov_isa_death', 'GOV.UK')} covers both, and the detailed conditions are in the ${h.src('leg_isa_regs', 'ISA Regulations 1998')} and in ${h.src('gov_aps', 'HMRC guidance for ISA managers')}.</p>
 <p>The money in the account goes to the beneficiary named in the will. The allowance does not follow it: it belongs to the surviving spouse or civil partner whatever the will says. This is what makes the rule useful even when the savings themselves go to children, a charity or anyone else.</p>
 <h2>The continuing account</h2>

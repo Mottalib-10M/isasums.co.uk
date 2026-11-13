@@ -13,7 +13,7 @@ export default definePage({
   title: 'Premium Bonds Calculator: Median Prizes Against Interest',
   description: 'Premium Bonds prizes for your holding: median and average from the October 2026 prize table, lean and lucky years, against a taxable account after 2027/28 tax.',
   h1: 'Premium Bonds calculator: what a typical year of prizes looks like',
-  intro: 'Enter the Bonds you hold, your other income and the rate a taxable account would pay. The tool draws 4,000 simulated years from the current prize table and puts the after-tax interest beside them.',
+  intro: 'Enter the Premium Bonds you hold, your other income and the rate a taxable account would pay. The tool draws 4,000 simulated years from the current prize table and puts the after-tax interest beside them.',
   resume: (h) => {
     const PBp = h.P.premiumBonds;
     const s = h.PB.simulate(25000);
@@ -34,7 +34,7 @@ export default definePage({
     const s25 = h.PB.simulate(25000);
     const cmp = incomes.map((i) => { const t = h.tax(h.Y2, i, 1000); return [h.m(i), h.m(t.net), h.m(s25.median), t.net > s25.median ? 'Account' : 'Bonds (median)']; });
     const nHigh = h.tax(h.Y2, 55000, 1000).net, nBasic = h.tax(h.Y2, 30000, 1000).net;
-    return `<h2>Average and typical are two different numbers</h2>
+    return `<h2>Average and typical Premium Bonds prizes are two different numbers</h2>
 <p>A prize draw has a lopsided spread. Most months a Bond wins nothing; when it does win, the prize is usually one of the three smallest values. The large prizes are so rare that they hardly ever arrive, yet they carry a real slice of the fund. The table below runs the same simulation as the tool for five holdings. The second column is the prize fund rate applied to the holding; the third is the year that sits in the middle of the 4,000 draws.</p>
 ${h.table(['Holding', 'Average a year', 'Median year', '1 year in 10, below', '1 year in 10, above', 'No prize at all'], rows, `Simulated prizes over twelve draws, ${PBp.drawMonth} prize table (${h.num(PBp.totalPrizes)} prizes worth ${h.m(PBp.totalValue)}), odds ${h.num(PBp.odds)} to 1. Worked out by the engine of this site; not a forecast.`, ['l', 'r', 'r', 'r', 'r', 'r'])}
 <p>Two patterns stand out. Small holdings often end the year with nothing: the median for ${h.m(1000)} is ${h.m(h.PB.simulate(1000).median)}. And the gap between the median and the average narrows as a share of the holding when the holding grows, but it never closes, because a ${h.m(25)} or ${h.m(50)} prize is far more common than anything above ${h.m(1000)}. NS&I publishes how each month's fund is shared out in its ${h.src('nsi_alloc', 'monthly prize allocation')}; the table here uses the ${PBp.drawMonth} figures.</p>

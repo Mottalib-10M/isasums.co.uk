@@ -13,7 +13,7 @@ export default definePage({
   title: 'Cash ISA Changes April 2027: Rules, Dates and Tax Effect',
   description: 'Cash ISA changes from 6 April 2027 under SI 2026/1018: the £12,000 limit under 65, no transfers from investment ISAs, a 22 % charge on cash held in them.',
   h1: 'Cash ISA changes from April 2027: what the new regulations do',
-  intro: 'The reform of cash ISAs was announced in the November 2025 Budget and became law in September 2026. This guide goes through each rule, the dates, and what the savings that no longer fit would cost in tax.',
+  intro: 'The cash ISA changes that start in April 2027 were announced in the November 2025 Budget and became law in September 2026. This guide goes through each rule, the dates, and what the savings that no longer fit would cost in tax.',
   resume: (h) => {
     const B = h.y(h.Y2).isa, R2 = h.y(h.Y2).savingsRates;
     return `From 6 April 2027, SI 2026/1018 changes four things for cash ISAs. First, anyone who is 64 or under at the end of a tax year may pay no more than ${h.m(B.cashUnder65)} into cash ISAs in that year, inside an overall allowance that stays at ${h.m(B.overall)}; from the year you reach 65 the cash ceiling is ${h.m(B.cashFrom65)}. Second, under-65s can no longer transfer money from a stocks and shares or innovative finance ISA into a cash ISA. Third, interest paid on cash held inside those investment ISAs bears a flat charge of ${h.pc(h.y(h.Y2).cashInvestmentIsaCharge)}, paid by the ISA manager to HMRC, at every age. Fourth, a portfolio made only of money market funds no longer counts as a stocks and shares holding. Cash already in ISAs stays tax free. Savings that no longer fit fall into taxable accounts, where interest above your allowances is taxed at ${h.pc(R2.basic)}, ${h.pc(R2.higher)} or ${h.pc(R2.additional)} in ${h.Y2}.`;
@@ -39,7 +39,7 @@ export default definePage({
     const incomes = [18000, 30000, 45000, 60000, 130000];
     const extra = 8000, rate = 0.04;
     const rows = incomes.map((inc) => [h.m(inc), ...[1, 3, 5].map((n) => h.m2(h.tax(h.Y2, inc, extra * n * rate).tax))]);
-    return `<h2>The rules one by one</h2>
+    return `<h2>The cash ISA changes from April 2027, rule by rule</h2>
 <h3>A cash ceiling inside the £20,000</h3>
 <p>Until 5 April 2027, the ${h.m(A.overall)} ISA allowance can be split in any proportion, including all in cash. From 6 April 2027, regulation 4ZA of the ${h.src('leg_isa_regs', 'ISA Regulations 1998')}, as amended by ${h.src('leg_si_1018', 'SI 2026/1018')}, adds a second ceiling of ${h.m(B.cashUnder65)} on cash ISA subscriptions for anyone who is 64 or under at the end of the year. The end of the year is 5 April, so in ${h.Y2} the question is your age on 5 April 2028. Those aged 65 or more on that date keep ${h.m(B.cashFrom65)} in cash. The ${h.a('cash-isa-limit', 'cash ISA limit page')} turns this into a ceiling for each year of birth, and the ${h.a('isa-over-65', 'page on savers aged 65 and over')} covers birthdays close to 5 April.</p>
 <p>Providers will have to watch subscriptions. The regulations extend the repair procedure of regulation 4A so that it treats cash paid in above the cash ceiling separately from money paid in above the overall limit. A deposit that takes an under-65 saver past ${h.m(B.cashUnder65)} in cash is therefore not a valid ISA subscription.</p>

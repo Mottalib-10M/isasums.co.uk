@@ -13,7 +13,7 @@ export default definePage({
   title: 'Premium Bonds Prize Rate 4.35 %: Taxable Rate It Matches',
   description: 'Premium Bonds prize fund rate of 4.35 % explained: an average, not a return, the earlier 3.30 %, and the taxable rate that would match it in each tax band.',
   h1: 'Premium Bonds prize fund rate: what 4.35 % is worth in your tax band',
-  intro: 'Enter your Bonds and your other income. The tool finds the rate a taxable account would have to pay to leave you, after tax, what the prize fund average and the median year bring.',
+  intro: 'Enter your Premium Bonds and your other income. The tool finds the rate a taxable account would have to pay to leave you, after tax, what the 4.35 % prize rate on average and the median year bring.',
   resume: (h) => {
     const PBp = h.P.premiumBonds;
     const s = h.PB.simulate(30000);
@@ -32,7 +32,7 @@ export default definePage({
     const incomes = [15000, 40000, 47000, 60000, 110000, 130000];
     const rows = incomes.map((i) => [h.m(i), h.pc(h.S.grossEquivalentRate(h.Y1, i, 30000, s.mean), 2), h.pc(h.S.grossEquivalentRate(h.Y2, i, 30000, s.mean), 2), h.pc(h.S.grossEquivalentRate(h.Y2, i, 30000, s.median), 2)]);
     const hist = [10000, 30000, 50000].map((x) => [h.m(x), h.m(x * PBp.previousRate), h.m(x * PBp.rate), h.m(x * (PBp.rate - PBp.previousRate))]);
-    return `<h2>Where the 4.35 % comes from</h2>
+    return `<h2>Where the Premium Bonds prize rate of 4.35 % comes from</h2>
 <p>The published figures let anyone check the rate. In ${PBp.drawMonth} the draw paid ${h.num(PBp.totalPrizes)} prizes worth ${h.m(PBp.totalValue)} (${h.src('nsi_alloc', 'NS&I, monthly prize allocation')}). There is one prize for every ${h.num(PBp.odds)} Bonds, so the draw held about ${h.num(Math.round(h.PB.ELIGIBLE / 1e9 * 10) / 10)} billion of them. Twelve months of that fund, divided by the Bonds, gives ${h.pc(h.PB.impliedRate, 2)}, which is the published rate once rounding is allowed for. The rate is therefore a size of prize fund, and both it and the odds are variable.</p>
 <p>The rise from ${h.pc(PBp.previousRate)} to ${h.pc(PBp.rate)} adds about ${h.m(1000 * (PBp.rate - PBp.previousRate))} a year to the average for each ${h.m(1000)} held. NS&I's own pages are not consistent about the first draw at the new rate, so this site does not state a start month.</p>
 ${h.table(['Holding', `Average at ${h.pc(PBp.previousRate)}`, `Average at ${h.pc(PBp.rate)}`, 'Difference a year'], hist, 'Average prizes a year at each prize fund rate. The average is not what a typical holder receives.', ['l', 'r', 'r', 'r'])}

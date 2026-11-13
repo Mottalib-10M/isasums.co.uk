@@ -13,7 +13,7 @@ export default definePage({
   title: 'Cash ISA Limit 2027/28: £12,000 Under 65, £20,000 After',
   description: 'The cash ISA limit is £20,000 in 2026/27, then £12,000 from 6 April 2027 for anyone 64 or under on 5 April. Find your limit from your birth year and birthday.',
   h1: 'Cash ISA limit: £20,000 this year, £12,000 under 65 from April 2027',
-  intro: 'Give your year of birth, say whether your birthday falls after 5 April, and enter the cash you would like to put away each year. The tool returns your cash ceiling for both tax years and the part that would not fit.',
+  intro: 'Give your year of birth, say whether your birthday falls after 5 April, and enter the cash you would like to put away each year. The tool returns your cash ISA limit for both tax years and the part that would not fit.',
   resume: (h) => {
     const A = h.y(h.Y1).isa, B = h.y(h.Y2).isa;
     return `In the ${h.Y1} tax year, ending on 5 April 2027, the whole ${h.m(A.overall)} ISA allowance may go into cash ISAs, whatever your age. From 6 April 2027 the Individual Savings Account (Amendment) (No. 2) Regulations 2026, SI 2026/1018, cap cash ISA subscriptions at ${h.m(B.cashUnder65)} a year for anyone who is 64 or under at the end of the tax year, which means on 5 April. For ${h.Y2} the test date is 5 April 2028: if you are 65 or older on that day, you keep a cash ceiling of ${h.m(B.cashFrom65)}. Someone born on 5 April 1963 is 65 that day and keeps it; someone born a day later is 64 and does not. The overall allowance stays ${h.m(B.overall)}, so an under-65 saver can still place ${h.m(B.overall - B.cashUnder65)} in stocks and shares, innovative finance or Lifetime ISAs. Cash already held in ISAs is not affected.`;
@@ -38,7 +38,7 @@ export default definePage({
     });
     return `<h2>Where the rule comes from</h2>
 <p>The lower ceiling was announced at the Budget of 26 November 2025 and is now law. ${h.src('leg_si_1018', 'SI 2026/1018')} was made on 10 September 2026, laid before Parliament on 14 September 2026 and takes effect on 6 April 2027. It amends regulation 4ZA of the ISA Regulations 1998 so that a person who is 64 or under at the end of a year may subscribe only ${h.m(B.cashUnder65)} to cash ISAs in that year. The ${h.src('gov_tfs22', 'HMRC newsletter of June 2026')} set out the same design before the regulations were made.</p>
-<h2>Your ceiling by date of birth</h2>
+<h2>Your cash ISA limit by date of birth</h2>
 ${h.table(['Born', 'Age on 5 April 2028', `Cash limit ${h.Y2}`, 'Room left for other ISAs', 'First year at £20,000 cash'], rows, 'Cash ISA ceiling in 2027/28 by date of birth. Worked out by the engine of this site from the age test of SI 2026/1018.', ['l', 'r', 'r', 'r', 'l'])}
 <p>The two rows for 1963 show how much the birthday matters. A saver born in March 1963 is already 65 on 5 April 2028 and never meets the ${h.m(B.cashUnder65)} ceiling. One born in October of the same year is still 64 on that date, so ${h.Y2} is capped and the full cash allowance only returns in 2028/29. Anyone born after 5 April 1963 faces at least one year at the lower figure.</p>
 <h2>What the ceiling does not touch</h2>

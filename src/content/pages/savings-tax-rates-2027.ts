@@ -13,7 +13,7 @@ export default definePage({
   title: 'Savings Tax Rates 2027/28: 22 %, 42 % and 47 % From April',
   description: 'Savings tax rates rise to 22 %, 42 % and 47 % on 6 April 2027 under the Finance Act 2026. See who pays more, how much more, and what stays the same for savers.',
   h1: 'Savings tax rates for 2027/28: two points more in every band',
-  intro: 'Enter your other income and the taxable interest you expect in a year. The tool runs the same figures through the 2026/27 and 2027/28 rules and shows the difference.',
+  intro: 'Enter your other income and the taxable interest you expect in a year. The tool runs the same figures through the 2026/27 and 2027/28 savings tax rates and shows the difference.',
   resume: (h) => {
     const Y1 = h.y(h.Y1), Y2 = h.y(h.Y2);
     const a = h.tax(h.Y1, 65000, 2500), b = h.tax(h.Y2, 65000, 2500);
@@ -31,7 +31,7 @@ export default definePage({
     const amounts = [2000, 5000, 10000];
     const rows = incomes.map((ns) => [h.m(ns), ...amounts.map((i) => { const a = h.tax(h.Y1, ns, i), b = h.tax(h.Y2, ns, i); return `${h.m2(b.tax - a.tax)} (${h.m(b.tax)})`; })]);
     const big = h.tax(h.Y2, 45000, 10000), big1 = h.tax(h.Y1, 45000, 10000);
-    return `<h2>What the law changes, and what it leaves alone</h2>
+    return `<h2>What the law changes in savings tax rates, and what it leaves alone</h2>
 <p>${h.src('leg_fa26_s3', 'Section 3 of the Finance Act 2026')} sets the savings rates for ${h.Y1} at ${h.pc(Y1.savingsRates.basic)}, ${h.pc(Y1.savingsRates.higher)} and ${h.pc(Y1.savingsRates.additional)}, the same as the main rates. ${h.src('leg_fa26_s5', 'Section 5')} then sets ${h.pc(Y2.savingsRates.basic)}, ${h.pc(Y2.savingsRates.higher)} and ${h.pc(Y2.savingsRates.additional)} for ${h.Y2}. From that year, interest will be taxed at a different rate from salary in the same band. The Budget announcement and its link with the ISA reform appear in ${h.src('gov_tfs19', 'HMRC’s tax-free savings newsletter 19')}.</p>
 <p>The allowances are fixed separately. ${h.src('leg_fa26_s9', 'Section 9')} freezes the ${h.m(Y2.startingRateLimit)} starting rate limit to 2030/31, and the Personal Savings Allowance has not been touched. The bands are frozen as well, so the higher rate still starts at ${h.m(Y2.personalAllowance + Y2.basicRateLimit)} of total income and the additional rate at ${h.m(Y2.higherRateLimit)} of taxable income.</p>
 <h2>Extra tax by income and interest</h2>

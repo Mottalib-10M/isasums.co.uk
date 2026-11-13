@@ -38,7 +38,7 @@ export default definePage({
 <p>The table adds the ${h.m(i)} from ${h.m(10000)} at 4 % on top of interest already received from other taxable accounts, and shows the extra tax it causes in ${h.Y2}, for three incomes.</p>
 ${h.table(['Other interest already received', `Tax on the ${h.m(i)}, income ${h.m(35000)}`, `Income ${h.m(60000)}`, `Income ${h.m(130000)}`], rows, `Extra tax caused by ${h.m(i)} of interest in ${h.Y2}, after interest from other taxable accounts. Engine of this site, Finance Act 2026 rates.`, ['l', 'r', 'r', 'r'])}
 <p>At ${h.m(35000)} nothing is due until the other accounts pass ${h.m(Y1.psa.basic - i)}. At ${h.m(60000)} the room is only ${h.m(Y1.psa.higher - i)}, so a second account of a similar size is enough to create a bill. At ${h.m(130000)} every pound of interest is taxed at ${h.pc(h.y(h.Y2).savingsRates.additional)}, whatever the other accounts hold.</p>
-<h2>How much interest is tax free at your income</h2>
+<h2>How much of the interest on £10,000 savings is tax free at your income</h2>
 <p>The second table turns the rules round: it shows the largest amount of interest a person can receive in ${h.Y2} with no tax, and the rate on ${h.m(10000)} that would produce it. Low incomes gain from the Personal Allowance and the ${h.m(Y1.startingRateLimit)} starting rate; higher ones only from the allowance.</p>
 ${h.table(['Other income', 'Interest tax free', 'Rate on £10,000 to reach it'], limits, `Largest interest with no tax in ${h.Y2}, from the engine of this site.`, ['l', 'r', 'r'])}
 <h2>What the 2027/28 rates change at this size</h2>

@@ -13,7 +13,7 @@ export default definePage({
   title: 'Starting Rate for Savings 2026/27: £5,000 Taxed at 0 %',
   description: 'Starting rate for savings: up to £5,000 of interest at 0 %, cut by £1 for each £1 of other income above £12,570 and gone at £17,570, frozen to 2030/31.',
   h1: 'Starting rate for savings: the £5,000 band and who keeps it',
-  intro: 'Enter your income other than savings, such as pension, wages or trading profit, and the interest you expect this tax year. The tool shows how much of the 0 % band is still yours and which layer covers each pound of interest.',
+  intro: 'Enter your income other than savings, such as pension, wages or trading profit, and the interest you expect this tax year. The tool shows how much of the 0 % starting rate band is still yours and which layer covers each pound of interest.',
   resume: (h) => {
     const Y1 = h.y(h.Y1);
     const gone = Y1.personalAllowance + Y1.startingRateLimit;
@@ -32,7 +32,7 @@ export default definePage({
     const incomes = [0, 12570, 14000, 15500, 16000, 17000, 17570, 20000];
     const rows = incomes.map((ns) => { const a = h.tax(h.Y1, ns, 3000), b = h.tax(h.Y2, ns, 3000); return [h.m(ns), h.m(a.startingAvailable), h.m(h.S.taxFreeInterest(h.Y1, ns)), h.m2(a.tax), h.m2(b.tax)]; });
     const ex15 = h.tax(h.Y1, 15000, 3000);
-    return `<h2>How the band shrinks</h2>
+    return `<h2>How the starting rate band for savings shrinks</h2>
 <p>The band is measured against taxable income, not total income. First the Personal Allowance is used by your non-savings income. Whatever non-savings income remains taxable then eats into the ${h.m(Y1.startingRateLimit)} band pound for pound. So the band does not start shrinking at zero income but only once wages, pension or profit pass ${h.m(Y1.personalAllowance)}, and it is gone at ${h.m(Y1.personalAllowance + Y1.startingRateLimit)}. GOV.UK sets out the same test with worked figures on its ${h.src('gov_savings_free', 'page on how much interest is tax free')}.</p>
 ${h.table(['Other income', 'Starting rate left', 'Tax-free interest in all', `Tax on ${h.m(3000)}, ${h.Y1}`, `Same, ${h.Y2}`], rows, `Starting rate left and tax on ${h.m(3000)} of interest by other income before tax. Computed by this site's engine.`, ['l', 'r', 'r', 'r', 'r'])}
 <p>The table shows three zones. Below ${h.m(Y1.personalAllowance)} part of the Personal Allowance is still free and covers interest before the band is even touched. Between ${h.m(Y1.personalAllowance)} and ${h.m(Y1.personalAllowance + Y1.startingRateLimit)} the band shrinks and the ${h.m(Y1.psa.basic)} Personal Savings Allowance stacks on top. Above that, only the allowance remains. Take ${h.m(15000)} of pension and ${h.m(3000)} of interest: ${h.m(ex15.atStarting)} falls in the starting rate, ${h.m(ex15.atNil)} under the allowance, and the tax is ${h.m2(ex15.tax)}.</p>

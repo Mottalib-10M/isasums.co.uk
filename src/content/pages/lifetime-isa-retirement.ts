@@ -35,7 +35,7 @@ export default definePage({
     const at60 = h.I.lisaProjection(30, L.annual, L.accessAge - 30, 0.04).value;
     const monthly = [100, 200, 333.33].map((m) => { const r = h.I.lisaProjection(30, m * 12, L.accessAge - 30, 0.04);
       return [h.m(m), h.m(Math.min(m * 12, L.annual)), h.m(r.bonus), h.m(r.value)]; });
-    return `<h2>Three phases of the account</h2>
+    return `<h2>Three phases of a Lifetime ISA kept for retirement</h2>
 <p>Seen as a retirement product, a Lifetime ISA has a shape of its own. It starts with a paying phase that can last at most ${L.payUntilAge - L.openMinAge} years for someone who opens it at ${L.openMinAge}, and only ${L.payUntilAge - L.openBeforeAge + 1} for someone who opens it at ${L.openBeforeAge - 1}. A waiting phase follows from ${L.payUntilAge} to ${L.accessAge}, ten years in which the pot can grow but receives nothing new. The access phase begins at ${L.accessAge} and has no end date (${h.src('gov_lisa', 'GOV.UK, Lifetime ISA')}).</p>
 <p>The bonus only arrives during the first phase. The amounts below assume the full ${h.m(L.annual)} every year and 4 % growth, a round figure chosen for illustration and not a forecast of any fund or account.</p>
 ${h.table(['Opened at', 'Years of payments', 'Own payments', 'Bonus', 'Pot at 60'], ages, 'Lifetime ISA kept until 60, £4,000 a year until 50, 4 % growth a year assumed. Worked out by the engine of this site.', ['l', 'r', 'r', 'r', 'r'])}

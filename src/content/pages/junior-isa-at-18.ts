@@ -32,7 +32,7 @@ export default definePage({
     const rows = values.map((v) => [h.m(v), h.m(v * 0.04), ...incomes.map((inc) => h.m2(h.tax(h.Y2, inc, v * 0.04).tax))]);
     const free = incomes.map((inc) => [h.m(inc), h.m(h.S.taxFreeInterest(h.Y2, inc)), h.m(h.S.taxFreeBalance(h.Y2, inc, 0.04))]);
     const years = [9000, 15000, 25000, 40000, 60000].map((v) => [h.m(v), `${Math.ceil(v / cashCap)}`, `${Math.ceil(v / h.y(h.Y1).isa.overall)}`]);
-    return `<h2>Two birthdays, two changes</h2>
+    return `<h2>Two birthdays, two changes: the Junior ISA at 16 and at 18</h2>
 <p>Ownership and control are separate in a Junior ISA. The money belongs to the child from the first payment, but until ${J.controlAge} a parent or guardian with parental responsibility runs the account as its registered contact (${h.src('gov_jisa', 'GOV.UK, Junior Individual Savings Accounts')}). At ${J.controlAge}, the child can take over that role. From then on they manage the account themselves and, as registered contact, can ask the provider to move it to another provider. What they cannot do is take money out.</p>
 <p>At ${J.accessAge} the lock comes off. GOV.UK states that Junior ISAs automatically turn into an adult ISA when the child turns ${J.accessAge}, and that the young person can then take out any money in them. If the young person lacks the mental capacity to manage the money at ${J.accessAge}, GOV.UK points to a financial deputyship order from the Court of Protection.</p>
 <h2>Child Trust Funds follow the same ages</h2>

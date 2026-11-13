@@ -13,7 +13,7 @@ export default definePage({
   title: 'Flexible ISA Rules: Withdraw and Replace in the Same Year',
   description: 'A flexible ISA lets you take money out and put it back in the same tax year without using more allowance. See the GOV.UK example and the cash rule from 2027.',
   h1: 'Flexible ISA: putting back what you took out',
-  intro: 'Enter what you have paid in this tax year, what you have taken out, and whether the account is flexible. The tool shows how much you can still pay in, and the figure for the other kind of account.',
+  intro: 'Enter what you have paid in this tax year, what you have taken out, and whether the ISA is flexible. The tool shows how much you can still pay in, and the figure for the other kind of account.',
   resume: (h) => {
     const ex = h.I.flexibleRoom(h.Y1, 10000, 3000, true), nx = h.I.flexibleRoom(h.Y1, 10000, 3000, false);
     return `A flexible ISA is one whose terms allow you to withdraw cash and replace it later in the same tax year without the replacement counting as a new subscription. Any ISA lets you take money out at any time without losing the tax benefit on what remains, but only a flexible one gives back the allowance used by the money withdrawn. GOV.UK gives the standard example: with the ${h.m(h.y(h.Y1).isa.overall)} allowance, you pay in ${h.m(10000)} and take out ${h.m(3000)}. If the ISA is flexible you can still pay in ${h.m(ex.room)}; if it is not, only ${h.m(nx.room)}, because the ${h.m(3000)} withdrawn has used allowance for good. The money must be put back before 5 April of the same tax year; after that date the room is lost. Flexibility is an option for the provider, not a right, and from 6 April 2027 money replaced in a cash ISA may not take a saver past the cash ISA ceiling.`;
@@ -30,7 +30,7 @@ export default definePage({
       const f = h.I.flexibleRoom(h.Y1, paid, out, true), n = h.I.flexibleRoom(h.Y1, paid, out, false);
       return [h.m(paid), h.m(out), h.m(f.room), h.m(n.room), h.m(f.room - n.room)];
     });
-    return `<h2>The rule in the regulations</h2>
+    return `<h2>The flexible ISA rule in the regulations</h2>
 <p>Flexibility comes from regulation 5DDB of the ${h.src('leg_isa_regs', 'ISA Regulations 1998')}. It lets the terms of an ISA provide for cash withdrawn to be replaced, in whole or in part, without affecting the saver’s subscription limit. ${h.src('gov_isa_withdraw', 'GOV.UK')} sums it up as being able to take cash out and put it back in the same tax year without reducing the current year’s allowance. The word that matters is cash: the rule concerns money withdrawn from the account, so it fits naturally with cash ISAs and with the cash part of other ISAs that offer it.</p>
 <h2>Five withdrawals compared</h2>
 ${h.table(['Paid in this year', 'Taken out', 'Room left if flexible', 'Room left if not', 'Difference'], rows, `Room left in the ${h.Y1} allowance of £20,000 after one payment and one withdrawal. Worked out by the engine of this site from the GOV.UK example.`, ['r', 'r', 'r', 'r', 'r'])}

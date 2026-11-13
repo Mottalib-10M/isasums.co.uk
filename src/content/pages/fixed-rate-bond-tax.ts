@@ -13,7 +13,7 @@ export default definePage({
   title: 'Fixed Rate Bond Tax: the Year Your Interest Is Taxed In',
   description: 'Fixed rate bond tax: interest counts in the year it is paid or made available, so a bond paying at maturity can use a whole allowance, then 22 % from 2027.',
   h1: 'Tax on fixed rate bonds: annual interest or one payment at the end',
-  intro: 'Enter your other income, the interest the bond pays at maturity and any other taxable interest in that year. The tool prices the same payment in 2026/27 and in 2027/28.',
+  intro: 'Enter your other income, the interest the bond pays at maturity and any other taxable interest in that year. The tool works out the tax on the same fixed rate bond payment in 2026/27 and in 2027/28.',
   resume: (h) => {
     const a = h.tax(h.Y1, 48000, 900) .tax + h.tax(h.Y2, 48000, 900).tax;
     const b = h.tax(h.Y2, 48000, 1800).tax;
@@ -33,7 +33,7 @@ export default definePage({
       return [h.m(ns), h.m2(yearly), h.m2(early), h.m2(late)];
     });
     const Y1 = h.y(h.Y1);
-    return `<h2>Three ways a bond can pay</h2>
+    return `<h2>Three ways a fixed rate bond can pay</h2>
 <p>Fixed rate bonds differ less in their rate than in how they hand over the interest. Some pay it monthly or yearly into another account. Some add it to the bond each year but let you withdraw it. Others hold everything until the end of the term. For income tax the question is always the same: when was the interest paid to you, or made available to you? Monthly and yearly payments are taxed as they arrive. Interest credited to the bond each year is taxed each year if you could draw it. Interest locked away until maturity is taxed all at once, in the year the term ends.</p>
 <p>No tax is taken off by the provider in any of these cases. The provider reports the interest to HMRC for the year in which it was paid, and HMRC collects any tax due through the routes set out on the ${h.src('gov_savings_pay', 'GOV.UK page on paying tax on savings interest')}, usually a later tax code (see the ${h.a('savings-interest-tax-code', 'tax code page')}).</p>
 <h2>Two years of interest, one allowance</h2>

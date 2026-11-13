@@ -27,7 +27,7 @@ export default definePage({
   ],
   body: (h) => {
     const Y1 = h.y(h.Y1);
-    return `<h2>The order of the layers matters</h2>
+    return `<h2>The order of the layers matters for tax on savings interest</h2>
 <p>The four tax-free layers are not added up and set against the interest as one lump. Income tax works through income in a fixed order: wages, pensions and rent first, then savings, then dividends. Your Personal Allowance is used by the first slice, so a full-time worker has none left for interest. The ${h.m(Y1.startingRateLimit)} starting rate then applies only to savings that fall within the lowest ${h.m(Y1.startingRateLimit)} of taxable income: with wages of ${h.m(Y1.personalAllowance + Y1.startingRateLimit)} or more, that band is already full before the first pound of interest arrives (${h.src('leg_ita_12a', 'Income Tax Act 2007, section 12A')}). The Personal Savings Allowance comes next, and it is a nil rate band rather than a deduction, so the interest it covers still counts when your band is worked out.</p>
 ${h.taxByIncome([12570, 16000, 25000, 40000, 49000, 60000, 110000, 150000], 1500)}
 <p>The table shows a pattern people do not expect. On ${h.m(1500)} of interest, a pensioner on ${h.m(16000)} pays nothing because the starting rate still has room, while someone on ${h.m(49000)} pays more than someone on ${h.m(40000)} by more than the change in rate alone would explain: the interest takes their total over the basic rate limit, their allowance halves to ${h.m(Y1.psa.higher)} and part of what is left is taxed at the higher rate.</p>

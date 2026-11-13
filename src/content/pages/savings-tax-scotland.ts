@@ -13,7 +13,7 @@ export default definePage({
   title: 'Savings Tax in Scotland 2026/27: UK Rates on Your Interest',
   description: 'Savings tax in Scotland: interest is taxed at UK rates and bands, and the £1,000 or £500 allowance uses the UK £50,270 line even if your pay is taxed at 42 %.',
   h1: 'Savings tax for Scottish taxpayers: UK rules on interest',
-  intro: 'Enter your income other than savings and your taxable interest. The tool applies the Scottish rates to pay or pension and the UK savings rates and bands to the interest, as the law requires.',
+  intro: 'Enter your income other than savings and your taxable interest. For savings tax in Scotland, the tool applies the Scottish rates to pay or pension and the UK savings rates and bands to the interest, as the law requires.',
   resume: (h) => {
     const Y1 = h.y(h.Y1);
     const x = h.tax(h.Y1, 45000, 1500, { nation: 'scotland' });
@@ -42,7 +42,7 @@ ${h.table(['Scottish income', 'Scottish band of the last £ of pay', 'Savings al
 <p>The rows between ${h.m(hi42)} and ${h.m(Y1.personalAllowance + Y1.basicRateLimit)} are the ones that surprise people. Their pay is already taxed at 42 %, the Scottish higher rate, but their interest is taxed as if they were basic rate taxpayers: the full ${h.m(Y1.psa.basic)} allowance, then ${h.pc(Y1.savingsRates.basic)}. Once salary and interest together cross the UK line, the allowance halves and the interest above it meets the UK higher savings rate of ${h.pc(Y1.savingsRates.higher)}, which is lower than the 42 % Scottish rate on pay.</p>
 <h2>The allowance test is British, too</h2>
 <p>Section 12B, which fixes the Personal Savings Allowance at ${h.m(Y1.psa.basic)}, ${h.m(Y1.psa.higher)} or nil, uses the UK bands for Scottish taxpayers as well (${h.src('leg_ita_12b', 'Income Tax Act 2007, section 12B')}). A Scot is a higher rate taxpayer for this purpose only when income goes past the UK higher rate threshold, and an additional rate taxpayer only above ${h.m(Y1.higherRateLimit)} of taxable income. The ${h.a('personal-savings-allowance', 'Personal Savings Allowance page')} shows how interest can tip someone over the line.</p>
-<h2>2027/28 in Scotland</h2>
+<h2>Savings tax in Scotland in 2027/28</h2>
 <p>The UK savings rates for ${h.Y2} are already law, so the tax on interest for that year can be worked out now for a Scottish saver in exactly the same way as for anyone else; the ${h.a('savings-tax-rates-2027', 'page on the 2027/28 rates')} sets out the increase. The Scottish rates on pay for ${h.Y2} will be set by the Scottish Parliament later and are not known. They only enter the tax caused by interest when income is above ${h.m(Y1.taperThreshold)}, where interest shrinks the Personal Allowance and the extra tax on pay is priced at Scottish rates; the ${h.a('savings-income-over-100k', 'page on income over £100,000')} covers that zone. For that case the tool shows the savings part and marks the rest as not yet known.</p>`;
   },
 });

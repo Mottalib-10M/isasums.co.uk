@@ -13,7 +13,7 @@ export default definePage({
   title: 'Stocks and Shares ISA Cash: the 22 % Charge From April 2027',
   description: 'Stocks and shares ISA cash: from 6 April 2027 the ISA manager pays a flat 22 % of any interest on it to HMRC, at every age. Money market funds face a new limit.',
   h1: 'Cash inside a stocks and shares ISA: the 22 % charge from 2027',
-  intro: 'Enter the cash waiting in your investment ISA and the interest rate paid on it. The tool shows the charge in 2026/27 and 2027/28 and what interest is left.',
+  intro: 'Enter the cash waiting in your stocks and shares ISA and the interest rate paid on it. The tool shows the charge in 2026/27 and 2027/28 and what interest is left.',
   resume: (h) => {
     const c = h.y(h.Y2).cashInvestmentIsaCharge;
     const i = 6000 * 0.035;
@@ -31,7 +31,7 @@ export default definePage({
       const i = x * rate;
       return [h.m(x), h.m2(i), h.m2(h.S.accountTax(h.Y1, 'investment-isa-cash', 0, i)), h.m2(h.S.accountTax(h.Y2, 'investment-isa-cash', 0, i)), h.m2(h.tax(h.Y2, 30000, i).tax), h.m2(h.tax(h.Y2, 60000, i).tax)];
     });
-    return `<h2>Why the charge exists</h2>
+    return `<h2>Why cash in a stocks and shares ISA carries a charge</h2>
 <p>From ${h.Y2}, savers under 65 can put only ${h.m(h.y(h.Y2).isa.cashUnder65)} a year into cash ISAs. Without another rule, the remaining ${h.m(h.y(h.Y2).isa.overall - h.y(h.Y2).isa.cashUnder65)} could be paid into a stocks and shares ISA and simply left in cash, earning interest that no one taxes. The explanatory memorandum to ${h.src('leg_si_1018', 'SI 2026/1018')} names large cash balances in non-cash ISAs as one of the ways the lower limit could be avoided, and the flat charge is the answer. The ${h.src('gov_tfs22', 'HMRC newsletter of June 2026')} announced it alongside the ban on transfers from investment ISAs into cash.</p>
 <h2>The charge against ordinary tax</h2>
 ${h.table(['Cash held', 'Interest at 3.5 %', `Charge ${h.Y1}`, `Charge ${h.Y2}`, 'Tax in a taxable account, £30,000 income', 'Same, £60,000 income'], rows, `Charge on interest from cash held in a stocks and shares ISA, against the income tax the same interest would cost in an ordinary account in ${h.Y2} (no other taxable interest assumed). Worked out by the engine of this site.`, ['r', 'r', 'r', 'r', 'r', 'r'])}

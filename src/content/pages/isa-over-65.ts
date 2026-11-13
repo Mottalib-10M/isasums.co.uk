@@ -13,7 +13,7 @@ export default definePage({
   title: 'ISA Rules Over 65 From 2027: Keep the £20,000 Cash Limit',
   description: 'ISA rules for savers aged 65 and over from April 2027: £20,000 in cash, transfers into cash allowed. The test is your age on 5 April, with birth date examples.',
   h1: 'ISAs over 65: keeping the full £20,000 cash limit from April 2027',
-  intro: 'Enter your date of birth. The tool tells you your age on 5 April 2028, your cash ISA ceiling in 2027/28, and the first tax year in which you have the full £20,000 for cash.',
+  intro: 'Enter your date of birth. The tool applies the ISA rules for savers over 65 and tells you your age on 5 April 2028, your cash ISA ceiling in 2027/28, and the first tax year in which you have the full £20,000 for cash.',
   resume: (h) => {
     const B = h.y(h.Y2).isa;
     const late = h.I.firstYearFullCash(1963, 4, 6);
@@ -36,7 +36,7 @@ export default definePage({
       return [label, `${age}`, h.m(lim), fy, lim === B.cashFrom65 ? 'allowed' : 'not allowed'];
     });
     const st = h.P.stats;
-    return `<h2>Why 5 April decides everything</h2>
+    return `<h2>Why 5 April decides who is over 65 under the ISA rules</h2>
 <p>The wording in ${h.src('leg_si_1018', 'SI 2026/1018')} is that the lower ceiling applies to an individual who is 64 or under at the end of the year. A tax year ends on 5 April, so your age on that date governs every subscription made between the previous 6 April and then. This gives an advantage to people whose birthday falls early in the calendar year: they are treated as 65 for months before they actually reach it.</p>
 ${h.table(['Date of birth', 'Age on 5 April 2028', `Cash limit ${h.Y2}`, 'First year at £20,000', 'Transfer into cash in 2027/28'], rows, 'Cash ISA position in 2027/28 by date of birth. Worked out by the engine of this site from the age test of SI 2026/1018.', ['l', 'r', 'r', 'l', 'l'])}
 <p>The pairs of rows either side of 5 April show the edge of the rule. Born on 5 April 1963, you reach 65 on the very last day of ${h.Y2} and keep ${h.m(B.cashFrom65)}. Born a day later, you are 64 on 5 April 2028 and have ${h.m(B.cashUnder65)} for that year, then ${h.m(B.cashFrom65)} from 2028/29. Someone born on 10 January 1964 is also capped in ${h.Y2} but returns to the full figure a year later, while a birthday of 20 August 1964 means two capped years.</p>

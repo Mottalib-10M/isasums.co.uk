@@ -13,7 +13,7 @@ export default definePage({
   title: 'Lifetime ISA 2026/27: £4,000 a Year and a £1,000 Bonus',
   description: 'Lifetime ISA in 2026/27: open it between 18 and 39, pay in up to £4,000 a year until 50 and get a 25 % bonus. Work out the pot for a first home or for age 60.',
   h1: 'Lifetime ISA: the bonus, the ages and the size of the pot',
-  intro: 'Enter your age, what you plan to put in each year and how long before you use the money. The tool adds the government bonus on each payment, stops it at 50 and grows the pot at the rate you choose.',
+  intro: 'Enter your age, what you plan to put in each year and how long before you use the money. The tool adds the government bonus on each Lifetime ISA payment, stops it at 50 and grows the pot at the rate you choose.',
   resume: (h) => {
     const L = h.P.lisa;
     const five = h.I.lisaProjection(27, L.annual, 5, 0.035);
@@ -31,7 +31,7 @@ export default definePage({
       return [`${n} ${n === 1 ? 'year' : 'years'}`, h.m(r.paid), h.m(r.bonus), h.m(r.growth), h.m(r.value)]; });
     const starts = [18, 25, 32, 39].map((age) => { const r = h.I.lisaProjection(age, L.annual, L.payUntilAge - age, 0);
       return [`${age}`, `${L.payUntilAge - age}`, h.m(r.paid), h.m(r.bonus)]; });
-    return `<h2>How the bonus builds up</h2>
+    return `<h2>How the Lifetime ISA bonus builds up</h2>
 <p>The bonus is a quarter of what you pay in, not a quarter of the pot, and it stops growing once you have paid ${h.m(L.annual)} in a tax year (${h.src('gov_lisa', 'GOV.UK, Lifetime ISA')}). Paying more than ${h.m(L.annual)} is not possible, so the most any saver receives is ${h.m(L.maxBonus)} a year. The bonus then sits in the account and earns interest or investment growth along with your own money. The table follows a saver aged 27 who pays the full amount each year, with growth set at 3.5 % as an assumption.</p>
 ${h.table(['Time', 'Own payments', 'Bonus', 'Growth', 'Pot'], rows, 'Lifetime ISA opened at 27, £4,000 paid each year, 3.5 % growth a year assumed. Worked out by the engine of this site.', ['l', 'r', 'r', 'r', 'r'])}
 <p>After ten years the bonus alone is worth ${h.m(h.I.lisaProjection(27, L.annual, 10, 0).bonus)} before any growth on it. Growth is never guaranteed: in a cash Lifetime ISA it depends on the rate offered, and in a stocks and shares one it can be negative.</p>

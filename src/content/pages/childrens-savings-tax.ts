@@ -35,7 +35,7 @@ export default definePage({
       return [h.m(g), h.m(i), over ? 'Parent' : 'Child', h.m2(b), h.m2(hi), h.m2(hi2)]; });
     const used = [0, 300, 500].map((o) => { const t1 = h.tax(h.Y1, 60000, 400, { otherInterest: o }); const t2 = h.tax(h.Y2, 60000, 400, { otherInterest: o });
       return [h.m(o), h.m2(t1.tax), h.m2(t2.tax)]; });
-    return `<h2>The rule in law</h2>
+    return `<h2>The children’s savings tax rule in law</h2>
 <p>Section 629 of the ${h.src('leg_ittoia_629', 'Income Tax (Trading and Other Income) Act 2005')} treats income from a settlement made by a parent on their own child under 18 who is not married or in a civil partnership, as the parent's income; a stepchild counts as a child for this purpose. A gift of money to a child counts as such a settlement. A de minimis limit of ${h.m(J.parentalInterestLimit)} a year applies, but it works as a threshold, not as an allowance: at ${h.m(101)} of interest, all ${h.m(101)} belongs to the parent for tax.</p>
 <h2>Where the £100 falls at today's rates</h2>
 <p>At 4 % a year, the limit is crossed once a parent's gift is above ${h.m(J.parentalInterestLimit / rate)}. The table shows what happens next for a basic rate parent on ${h.m(35000)} and a higher rate parent on ${h.m(60000)}, with no other interest of their own.</p>

@@ -13,7 +13,7 @@ export default definePage({
   title: 'Reclaim Tax on Savings Interest: Refunds and 4-Year Limit',
   description: 'Reclaim tax on savings interest: correct a tax code estimate this year, or claim past years within 4 years via Self Assessment, HMRC or form R40, with sums.',
   h1: 'Reclaiming tax on savings interest',
-  intro: 'Overpaid tax on interest usually comes from an estimate, not from the bank. This guide sets out how the overpayment arises, how the current year is corrected and how earlier years are claimed back.',
+  intro: 'Overpaid tax on savings interest usually comes from an estimate, not from the bank. This guide sets out how the overpayment arises, how the current year is corrected and how earlier years are reclaimed.',
   resume: (h) => {
     const t = h.tax(h.Y1, 11000, 2500);
     return `Since April 2016 banks pay interest without deducting tax, so an overpayment of tax on savings now comes mostly from HMRC’s own estimate: the tax code can include a figure for this year’s interest, based on what your accounts paid before, and it can be too high if balances have moved into ISAs, rates have fallen or income has dropped. For the current year GOV.UK points to the Personal Tax Account to compare the estimate with your bank statements, and to HMRC to correct it; once the code is put right, any excess can be repaid through your pay or pension. For earlier years the claim must be made within 4 years of the end of the tax year concerned, through a Self Assessment return if you send one, by contacting HMRC, or on form R40. A worked case: with ${h.m(11000)} of other income and ${h.m(2500)} of interest, the correct tax on the interest for ${h.Y1} is ${h.m2(t.tax)}, because unused Personal Allowance and the starting rate cover all of it, so anything collected on it is refundable.`;
@@ -38,7 +38,7 @@ export default definePage({
 <li><strong>A wrong split or a wrong record.</strong> Interest on a joint account belongs half to each spouse or civil partner by default, and interest earned inside an ISA is not taxable at all. A record that puts all the joint interest on one person, or counts ISA interest, overstates the bill.</li>
 <li><strong>A change of band.</strong> An estimate that assumes a higher rate taxpayer’s ${h.m(Y1.psa.higher)} allowance when the year ends at the basic rate, with a ${h.m(Y1.psa.basic)} allowance, takes too much.</li>
 </ul>
-<h2>Sizing the overpayment</h2>
+<h2>Sizing the tax to reclaim on savings interest</h2>
 <p>The table compares the correct tax on ${h.m(2500)} of interest with the tax collected if the code had assumed ${h.m(4000)}. It shows how much the size of an overpayment depends on the rest of the saver’s income: at low incomes both figures are nil because the allowances cover even the larger sum, while for a full-time employee every pound of over-estimate is taxed.</p>
 ${h.table(['Other income', `Correct tax on ${h.m(2500)}`, `Tax if ${h.m(4000)} assumed`, 'Overpaid'], rows, `Tax on interest in ${h.Y1} on actual and on over-estimated interest, by other income before tax. Computed by this site's engine.`, ['l', 'r', 'r', 'r'])}
 <p>The calculator above does the same sum for your own figures: enter your other income, the interest you actually earned and the tax already paid or collected on it, and it shows the difference.</p>

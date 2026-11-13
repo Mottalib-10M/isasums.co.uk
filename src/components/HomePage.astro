@@ -60,7 +60,7 @@ const timeline = [
   </div>
 
   <section class="not-prose my-10" aria-labelledby="grid-title">
-    <h2 id="grid-title" class="text-2xl font-bold text-navy-900">What an ISA saves a year, by income and balance</h2>
+    <h2 id="grid-title" class="text-2xl font-bold text-navy-900">What an ISA saves a year over a savings account, by income and balance</h2>
     <p class="mt-2 max-w-3xl text-navy-700">Tax you would pay on the interest in a taxable account, which is what a cash ISA saves you. Interest at {pc(RATE, 0)} a year, no other savings, rest of the UK. Two figures per balance: {Y1}, then {Y2}.</p>
     <Fragment set:html={h.table(['Income before tax', ...balances.flatMap((b) => [`${m(b)} · ${Y1}`, `${m(b)} · ${Y2}`])], grid, undefined, ['l', 'r', 'r', 'r', 'r', 'r', 'r'])} />
   </section>

@@ -13,7 +13,7 @@ export default definePage({
   title: 'Junior ISA 2026/27: the £9,000 Limit and the Value at 18',
   description: 'Junior ISA for 2026/27: £9,000 a year in cash or stocks and shares, opened by a parent, paid into by anyone, locked until 18. See what monthly payments reach.',
   h1: 'Junior ISA: the £9,000 limit and what the account can reach by 18',
-  intro: 'Enter the child’s age, what the family pays in each month and what is already saved. The tool grows the account to the 18th birthday and keeps the yearly total within the limit.',
+  intro: 'Enter the child’s age, what the family pays in each month and what is already saved. The tool grows the Junior ISA to the 18th birthday and keeps the yearly total within the limit.',
   resume: (h) => {
     const J = h.P.junior;
     const r = h.I.juniorProjection(0, 100, 0, 0.04);
@@ -31,7 +31,7 @@ export default definePage({
       return [h.m(mo), h.m(r.perYear), h.m(r.paid), h.m(r.growth), h.m(r.value)]; });
     const start = [0, 5, 10, 15].map((age) => { const r = h.I.juniorProjection(0, 100, age, 0.04);
       return [`${age}`, `${J.accessAge - age}`, h.m(r.paid), h.m(r.value)]; });
-    return `<h2>Who does what</h2>
+    return `<h2>Who does what in a Junior ISA</h2>
 <p>The rules separate three roles (${h.src('gov_jisa', 'GOV.UK, Junior Individual Savings Accounts')}). A parent or guardian with parental responsibility opens the account and is its registered contact. Anyone may pay in, within the yearly total (${h.src('gov_jisa_add', 'GOV.UK, adding money to a Junior ISA')}). The child owns the money from the first payment. At ${J.controlAge} the child can become the registered contact; at ${J.accessAge} the account becomes an adult ISA and the money can come out.</p>
 <h2>What regular payments grow to</h2>
 <p>The table assumes payments start at birth and growth of 4 % a year, a round figure for illustration. In a cash Junior ISA growth is the interest rate offered; in a stocks and shares one it is not guaranteed and the value can fall.</p>
